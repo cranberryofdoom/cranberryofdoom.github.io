@@ -1,0 +1,76 @@
+html {
+	height: 100%;
+	margin: 0;
+	background-color: white;
+}
+body {
+	display: flex;
+	min-height: 100vh;
+	flex-direction: column;
+	margin: 0;
+}
+.wrapper {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+}
+.content {
+	flex: 1;
+}
+div, h1, h2, h3, p, a, li {
+	font-family: 'Fira Sans', sans-serif;
+}
+h1 {
+	margin: 0;
+	font-size: 50px;
+	letter-spacing: 4px;
+	color: @turquoise;
+}
+.footer {
+	background-color: @turquoise;
+	padding: 20px 0;
+	a {
+		display: inline-block;
+		margin: 0 20px;
+		color: white;
+		&:hover {
+			opacity: 0.5;
+		}
+	}
+}
+aside {
+	background-color: lighten(@turquoise, 30%);
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	overflow: hidden;
+	position: relative;
+	text-align: center;
+	ul {
+		flex: 1;
+		padding: 0;
+		display: relative;
+		li {
+			padding: 20px 0;
+			color: darken(@turquoise, 20%);
+			list-style: none;
+			font-weight: 700;
+			text-transform: uppercase;
+			&:hover {
+				cursor: pointer;
+				color: @turquoise;
+			}
+		}
+	}
+}
+.back {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	i {
+		margin-right: 10px;
+	}
+}
+.projects {
+	padding: 40px;
+}

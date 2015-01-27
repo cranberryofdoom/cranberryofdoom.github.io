@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html ng-app="ashley" ng-controller="AppCtrl">
+
+<head>
+  <title ng-bind="pageTitle"></title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- font awesome from BootstrapCDN -->
+  <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+  <!-- Google web fonts -->
+  <link href='http://fonts.googleapis.com/css?family=Fira+Sans:300,400,700' rel='stylesheet' type='text/css'>
+  <!-- compiled CSS -->
+  <% styles.forEach( function ( file ) { %>
+    <link rel="stylesheet" type="text/css" href="<%= file %>" />
+    <% }); %>
+
+      <!-- compiled JavaScript -->
+      <% scripts.forEach( function ( file ) { %>
+        <script type="text/javascript" src="<%= file %>"></script>
+        <% }); %>
+
+</head>
+
+<body>
+
+  <div class="wrapper" ui-view="main"></div>
+  <div class="footer row center-xs bottom-xs">
+    <div class="col-xs-12">
+      <div>
+        <a href="https://dribbble.com/ashworks"><i class="fa fa-dribbble fa-lg"></i></a>
+        <a href="https://www.youtube.com/channel/UCLBlFNze2SJkUM8eolGhJbg"><i class="fa fa-youtube fa-lg"></i></a>
+        <a href="http://its-ashworks.tumblr.com/"><i class="fa fa-tumblr fa-lg"></i></a>
+        <a href="https://github.com/cranberryofdoom"><i class="fa fa-github-alt fa-lg"></i></a>
+        <a href="https://www.linkedin.com/in/ashleyqian"><i class="fa fa-linkedin fa-lg"></i></a>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>

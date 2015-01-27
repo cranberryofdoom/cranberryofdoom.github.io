@@ -1,0 +1,11 @@
+{
+  "name": "ashley",
+  "version": "0.3.2",
+  "devDependencies": {
+    "angular": "~1.2",
+    "angular-mocks": "~1.2",
+    "angular-ui-router": "~0.2",
+    "masonry": "~3.2.2"
+  },
+  "dependencies": {}
+}
