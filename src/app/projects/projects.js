@@ -14,7 +14,7 @@ angular.module('ashley.projects', [
 			},
 			data: {
 				pageTitle: 'Code',
-				filter: 'Code'
+				filter: 'code'
 			}
 		}).state('design', {
 			url: '/projects/design',
@@ -26,7 +26,7 @@ angular.module('ashley.projects', [
 			},
 			data: {
 				pageTitle: 'Design',
-				filter: 'Design'
+				filter: 'design'
 			}
 		}).state('leadership', {
 			url: '/projects/leadership',
@@ -38,7 +38,7 @@ angular.module('ashley.projects', [
 			},
 			data: {
 				pageTitle: 'Leadership',
-				filter: 'Leadership'
+				filter: 'leadership'
 			}
 		}).state('project', {
 			url: '/projects/:tag/:projectUrl',
@@ -54,9 +54,9 @@ angular.module('ashley.projects', [
 			}
 		});
 	})
-	.controller('ProjectsCtrl', function ProjectsController($scope, $rootScope, $firebase) {
+	.controller('ProjectsCtrl', function ProjectsController($scope, $rootScope, $firebase, key) {
 		var projectsCtrl = this;
-		var ref = new Firebase("https://shining-inferno-7914.firebaseio.com/");
+		var ref = new Firebase(key);
 		var sync = $firebase(ref);
 		projectsCtrl.projects = sync.$asArray();
 		projectsCtrl.project = null;
@@ -72,11 +72,20 @@ angular.module('ashley.projects', [
 						}
 					}
 				});
+				$rootScope.active = {
+					design: false,
+					code: false,
+					leadership: false
+				};
+				$rootScope.active[toParams.tag] = true;
+			} else {
+				$rootScope.active = {
+					design: false,
+					code: false,
+					leadership: false
+				};
 			}
 		});
-		projectsCtrl.inspectProject = function(index) {
-			projectsCtrl.project = projectsCtrl.projects[index];
-		};
 	})
 	.filter('filterProjectsByTag', function() {
 		return function(projects, tag) {
@@ -95,6 +104,18 @@ angular.module('ashley.projects', [
 			var filteredContributions = [];
 			for (var i = 0; i < contributions.length; i++) {
 				if (tag == contributions[i].tag) {
+					filteredContributions.push(contributions[i]);
+				}
+			}
+			return filteredContributions;
+		};
+	}).filter('filterByLeadership', function() {
+		return function(contributions) {
+			var filteredContributions = [];
+			for (var i = 0; i < contributions.length; i++) {
+				if ('leadership' == contributions[i].tag) {
+					filteredContributions.unshift(contributions[i]);
+				} else {
 					filteredContributions.push(contributions[i]);
 				}
 			}

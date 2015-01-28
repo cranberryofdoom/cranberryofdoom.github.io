@@ -14,7 +14,13 @@ angular.module('ashley', [
 
 .run(function run() {})
 
-.controller('AppCtrl', function AppCtrl($scope, $location) {
+.controller('AppCtrl', function AppCtrl($scope, $rootScope, $location) {
+  $rootScope.active = {
+    design: false,
+    code: false,
+    leadership: false
+  };
+  $scope.bottom = false;
   $scope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams) {
     if (angular.isDefined(toState.data.pageTitle)) {
       $scope.pageTitle = toState.data.pageTitle + ' | Ashley';
@@ -25,6 +31,24 @@ angular.module('ashley', [
 .directive('navbar', function() {
   return {
     restrict: 'E',
-    templateUrl: 'navbar/navbar.tpl.html'
+    templateUrl: 'directives/navbar.tpl.html'
+  };
+})
+
+.directive('back', function() {
+  return {
+    restrict: 'E',
+    templateUrl: 'directives/back.tpl.html',
+    controller: 'AppCtrl',
+    link: function($scope, el, attrs, formCtrl) {
+      var back = $(el.find('a'));
+      $(window).scroll(function() {
+        if ($(window).scrollTop() + $(window).height() == $(document).height()) {
+          back.addClass("bottom");
+        } else {
+          back.removeClass("bottom");
+        }
+      });
+    }
   };
 });

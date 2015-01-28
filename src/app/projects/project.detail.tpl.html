@@ -1,10 +1,20 @@
 <navbar></navbar>
 <div class="content" ng-controller="ProjectsCtrl as projectsCtrl">
 	<div class="project">
-		<h1>{{projectsCtrl.project.name}}</h1>
-		<p>{{projectsCtrl.project.brief}}</p>
-		<div ng-repeat="contribution in projectsCtrl.project.contributions">
-			<h2>{{contribution.kind}}</h2>
+		<div class="banner-wrapper">
+			<img ng-hide="{{projectsCtrl.project.thumbnail_url}}" src="{{projectsCtrl.project.thumbnail_url}}">
+			<div class="text-wrapper">
+				<h1>{{projectsCtrl.project.name}}</h1>
+				<p>{{projectsCtrl.project.brief}}</p>
+				<hr>
+			</div>
+		</div>
+		<div class="body-wrapper">
+			<div ng-repeat="contribution in projectsCtrl.project.contributions | filterByLeadership">
+				<h2>{{contribution.kind}}</h2>
+				<p>{{contribution.description}}</p>
+			</div>
 		</div>
 	</div>
 </div>
+<back></back>
