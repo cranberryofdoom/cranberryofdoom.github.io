@@ -1,0 +1,10 @@
+<navbar></navbar>
+<div class="content" ng-controller="ProjectsCtrl as projectsCtrl">
+	<div class="project">
+		<h1>{{projectsCtrl.project.name}}</h1>
+		<p>{{projectsCtrl.project.brief}}</p>
+		<div ng-repeat="contribution in projectsCtrl.project.contributions">
+			<h2>{{contribution.kind}}</h2>
+		</div>
+	</div>
+</div>

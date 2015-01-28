@@ -16,6 +16,8 @@ body {
 }
 .content {
 	flex: 1;
+	display: flex;
+	flex-direction: column;
 }
 div, h1, h2, h3, p, a, li {
 	font-family: 'Fira Sans', sans-serif;
@@ -25,6 +27,23 @@ h1 {
 	font-size: 50px;
 	letter-spacing: 4px;
 	color: @turquoise;
+}
+.profile-wrapper {
+	padding-top: 20px;
+	background-color: @turquoise;
+	img.profile {
+		display: block;
+		background-color: white;
+		width: 150px;
+		height: 150px;
+		border-radius: 50%;
+		margin: 0 auto;
+		border: 6px solid @turquoise;
+		box-shadow: 0 0 0 2px white;
+		&:hover {
+			cursor: pointer;
+		}
+	}
 }
 .footer {
 	background-color: @turquoise;
@@ -37,40 +56,4 @@ h1 {
 			opacity: 0.5;
 		}
 	}
-}
-aside {
-	background-color: lighten(@turquoise, 30%);
-	flex: 1;
-	display: flex;
-	flex-direction: column;
-	overflow: hidden;
-	position: relative;
-	text-align: center;
-	ul {
-		flex: 1;
-		padding: 0;
-		display: relative;
-		li {
-			padding: 20px 0;
-			color: darken(@turquoise, 20%);
-			list-style: none;
-			font-weight: 700;
-			text-transform: uppercase;
-			&:hover {
-				cursor: pointer;
-				color: @turquoise;
-			}
-		}
-	}
-}
-.back {
-	position: absolute;
-	bottom: 0;
-	width: 100%;
-	i {
-		margin-right: 10px;
-	}
-}
-.projects {
-	padding: 40px;
 }

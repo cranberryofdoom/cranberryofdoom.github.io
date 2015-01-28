@@ -2,9 +2,10 @@ angular.module('ashley', [
   'templates-app',
   'templates-common',
   'ashley.home',
-  'ashley.design',
-  'ashley.leadership',
-  'ui.router'
+  'ashley.projects',
+  'ashley.firebase.key',
+  'ui.router',
+  'firebase'
 ])
 
 .config(function myAppConfig($stateProvider, $urlRouterProvider) {
@@ -16,7 +17,7 @@ angular.module('ashley', [
 .controller('AppCtrl', function AppCtrl($scope, $location) {
   $scope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams) {
     if (angular.isDefined(toState.data.pageTitle)) {
-      $scope.pageTitle = toState.data.pageTitle + ' | ashley';
+      $scope.pageTitle = toState.data.pageTitle + ' | Ashley';
     }
   });
 })

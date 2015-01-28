@@ -5,7 +5,9 @@
     "angular": "~1.2",
     "angular-mocks": "~1.2",
     "angular-ui-router": "~0.2",
-    "masonry": "~3.2.2"
+    "masonry": "~3.2.2",
+    "firebase": "~2.1.1",
+    "angularfire": "~0.9.2"
   },
   "dependencies": {}
 }

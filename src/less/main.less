@@ -1,12 +1,15 @@
+/**
+ * These are the app-wide styles and dependancies.
+ **/
+
 @import 'shared/variables.less';
-@import 'css/flexboxgrid.min.css';
+@import '/vendor/flexboxgrid/flexboxgrid.min.css';
 @import 'shared/global.less';
 @import 'shared/nav.less';
 /**
- * Now that all app-wide styles have been applied, we can load the styles for
- * all the submodules and components we are using. 
- *
- * TODO: In a later version of this boilerplate, I'd like to automate this.
- */
+ * Styles for the submodules and components.
+ **/
 
 @import '../app/home/home.less';
+@import '../app/projects/projects.less';
+@import '../app/projects/project.less';
