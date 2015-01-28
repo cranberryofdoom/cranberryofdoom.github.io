@@ -72,18 +72,7 @@ angular.module('ashley.projects', [
 						}
 					}
 				});
-				$rootScope.active = {
-					design: false,
-					code: false,
-					leadership: false
-				};
-				$rootScope.active[toParams.tag] = true;
-			} else {
-				$rootScope.active = {
-					design: false,
-					code: false,
-					leadership: false
-				};
+				$rootScope.tag = toParams.tag;
 			}
 		});
 	})

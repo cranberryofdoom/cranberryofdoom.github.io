@@ -15,17 +15,18 @@ angular.module('ashley', [
 .run(function run() {})
 
 .controller('AppCtrl', function AppCtrl($scope, $rootScope, $location) {
-  $rootScope.active = {
-    design: false,
-    code: false,
-    leadership: false
-  };
+  $rootScope.tag = null;
   $scope.bottom = false;
   $scope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams) {
     if (angular.isDefined(toState.data.pageTitle)) {
       $scope.pageTitle = toState.data.pageTitle + ' | Ashley';
     }
   });
+  $scope.scroll = function() {
+    $('html, body').animate({
+      scrollTop: 0
+    }, 200);
+  };
 })
 
 .directive('navbar', function() {
