@@ -1,6 +1,7 @@
 angular.module('ashley.projects', [
 		'ui.router',
 		'firebase',
+		'carousel',
 		'ashley.firebase.key'
 	])
 	.config(function config($stateProvider) {

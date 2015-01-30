@@ -1,0 +1,14 @@
+<div class="carousel-inner">
+	{{show}}
+	<div class="photo" ng-repeat="photo in screenshot.photos">
+		<img ng-class="{active: show == $index}" data-index="{{$index}}" src="{{photo.image_url}}">
+	</div>
+</div>
+<div ng-hide="screenshot.photos.length <= 1">
+	<div class="carousel-nav">
+		<div ng-class="{active: show == $index}" ng-click="navigate($index)" class="carousel-button" ng-repeat="button in screenshot.photos">
+		</div>
+	</div>
+	<i class="carousel-left fa fa-caret-left fa-lg" ng-click="left(screenshot.photos.length)"></i>
+	<i class="carousel-right fa fa-caret-right fa-lg" ng-click="right(screenshot.photos.length)"></i>
+</div>

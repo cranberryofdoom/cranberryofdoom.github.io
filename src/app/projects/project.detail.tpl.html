@@ -7,19 +7,25 @@
 				<h1>{{projectsCtrl.project.name}}</h1>
 				<p>{{projectsCtrl.project.brief}}</p>
 				<div class="links">
-					<a href="{{projectsCtrl.project.website}}"><i class="fa fa-external-link fa-lg"></i></a>
-					<a href="{{projectsCtrl.project.github}}"><i class="fa fa-github-alt fa-lg"></i></a>
+					<a ng-show="projectsCtrl.project.website" href="{{projectsCtrl.project.website}}"><i class="fa fa-external-link fa-lg"></i></a>
+					<a ng-show="projectsCtrl.project.github" href="{{projectsCtrl.project.github}}"><i class="fa fa-github-alt fa-lg"></i></a>
 				</div>
 				<hr>
 			</div>
 		</div>
 		<div class="body-wrapper">
 			<div ng-repeat="contribution in projectsCtrl.project.contributions | filterByLeadership">
-				<h2>{{contribution.kind}}</h2>
+				<h2>
+					{{contribution.kind}}
+					<a ng-show="projectsCtrl.project.website && contribution.kind == 'Web Design'" href="{{projectsCtrl.project.website}}"><i class="fa fa-external-link"></i></a>
+					<a ng-show="projectsCtrl.project.github && contribution.tag == 'code'" href="{{projectsCtrl.project.github}}"><i class="fa fa-github-alt"></i></a>
+				</h2>
 				<p>{{contribution.description}}</p>
-				<div ng-repeat="screenshot in contribution.screenshots">
-					<img src="{{screenshot.image_url}}">
-					<p>{{screenshot.caption}}</p>
+				<div class="row">
+					<div class="screenshots col-xs-12 col-sm-6 center-xs" ng-repeat="screenshot in contribution.screenshots">
+						<carousel class="carousel"></carousel>
+						<p class="caption">{{screenshot.caption}}</p>
+					</div>
 				</div>
 			</div>
 		</div>
