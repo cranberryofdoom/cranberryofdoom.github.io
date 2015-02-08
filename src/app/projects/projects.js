@@ -2,113 +2,59 @@ angular.module('ashley.projects', [
 		'ui.router',
 		'firebase',
 		'carousel',
+		'ngDialog',
+		'contenteditable',
 		'ashley.firebase.key'
 	])
-	.config(function config($stateProvider) {
-		$stateProvider.state('code', {
-			url: '/projects/code',
-			views: {
-				"main": {
-					controller: 'ProjectsCtrl',
-					templateUrl: 'projects/projects.tpl.html'
-				}
-			},
-			data: {
-				pageTitle: 'Code',
-				filter: 'code'
-			}
-		}).state('design', {
-			url: '/projects/design',
-			views: {
-				"main": {
-					controller: 'ProjectsCtrl',
-					templateUrl: 'projects/projects.tpl.html'
-				}
-			},
-			data: {
-				pageTitle: 'Design',
-				filter: 'design'
-			}
-		}).state('leadership', {
-			url: '/projects/leadership',
-			views: {
-				"main": {
-					controller: 'ProjectsCtrl',
-					templateUrl: 'projects/projects.tpl.html'
-				}
-			},
-			data: {
-				pageTitle: 'Leadership',
-				filter: 'leadership'
-			}
-		}).state('project', {
-			url: '/projects/:tag/:projectUrl',
-			views: {
-				"main": {
-					controller: 'ProjectsCtrl',
-					templateUrl: 'projects/project.detail.tpl.html'
-				}
-			},
-			data: {
-				pageTitle: '',
-				filter: ''
-			}
-		});
-	})
-	.controller('ProjectsCtrl', function ProjectsController($scope, $rootScope, $firebase, key) {
-		var projectsCtrl = this;
+	.controller('ProjectsCtrl', function ProjectsController($scope, $rootScope, $firebase, key, ngDialog) {
 		var ref = new Firebase(key);
 		var sync = $firebase(ref);
-		projectsCtrl.projects = sync.$asArray();
-		projectsCtrl.project = null;
-		$scope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams) {
+		var projectCtrl = $scope;
+		projectCtrl.projects = sync.$asArray();
+		projectCtrl.project = null;
+		projectCtrl.editButton = false;
+		projectCtrl.editable = false;
+		projectCtrl.tag = null;
+		projectCtrl.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams) {
 			if (angular.isDefined(toState.data.filter)) {
-				projectsCtrl.tag = toState.data.filter;
+				projectCtrl.tag = toState.data.filter;
 			}
-			if (toParams !== undefined) {
-				projectsCtrl.projects.$loaded().then(function(projects) {
+			if (toParams.tag !== undefined) {
+				projectCtrl.projects.$loaded().then(function(projects) {
 					for (var i = 0; i < projects.length; i++) {
 						if (toParams.projectUrl == projects[i].url_safe) {
-							projectsCtrl.project = projects[i];
+							projectCtrl.project = projects[i];
 						}
 					}
 				});
-				$rootScope.tag = toParams.tag;
+				projectCtrl.tag = toParams.tag;
+			}
+			if (toState.name == "edit") {
+				projectCtrl.editButton = true;
 			}
 		});
-	})
-	.filter('filterProjectsByTag', function() {
-		return function(projects, tag) {
-			var filteredProjects = [];
-			for (var i = 0; i < projects.length; i++) {
-				var project = projects[i];
-				var projectTags = project.tags;
-				if ($.inArray(tag, projectTags) != -1) {
-					filteredProjects.push(project);
+		projectCtrl.edit = function() {
+			var dialog = ngDialog.open({
+				template: 'modal',
+				controller: function($scope) {
+					$scope.submit = function(password) {
+						if (projectCtrl.editable) {
+							projectCtrl.editable = false;
+						} else {
+							ref.authWithPassword({
+								email: "ashley.qian.0@gmail.com",
+								password: password
+							}, function(error, authData) {
+								if (error) {} else {
+									dialog.close();
+									dialog.closePromise.then(function(data) {
+										projectCtrl.editable = true;
+									});
+								}
+							});
+						}
+					};
 				}
-			}
-			return filteredProjects;
-		};
-	}).filter('filterContributionsByTag', function() {
-		return function(contributions, tag) {
-			var filteredContributions = [];
-			for (var i = 0; i < contributions.length; i++) {
-				if (tag == contributions[i].tag) {
-					filteredContributions.push(contributions[i]);
-				}
-			}
-			return filteredContributions;
-		};
-	}).filter('filterByLeadership', function() {
-		return function(contributions) {
-			var filteredContributions = [];
-			for (var i = 0; i < contributions.length; i++) {
-				if ('leadership' == contributions[i].tag) {
-					filteredContributions.unshift(contributions[i]);
-				} else {
-					filteredContributions.push(contributions[i]);
-				}
-			}
-			return filteredContributions;
+			});
 		};
 	});

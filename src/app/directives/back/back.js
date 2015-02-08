@@ -1,15 +1,15 @@
-angular.module('scrollTop', [])
-	.directive('scrollTop', function() {
+angular.module('back', [])
+	.directive('back', function() {
 		return {
 			restrict: 'E',
-			templateUrl: 'directives/scrollTop.tpl.html',
+			templateUrl: 'directives/back/back.tpl.html',
 			link: function($scope, el, attrs, formCtrl) {
-				var scrollTop = $(el.find('a'));
+				var back = $(el.find('a'));
 				$(window).scroll(function() {
 					if ($(window).scrollTop() + $(window).height() > $(document).height() - 20) {
-						scrollTop.addClass("bottom");
+						back.addClass("bottom");
 					} else {
-						scrollTop.removeClass("bottom");
+						back.removeClass("bottom");
 					}
 				});
 			}

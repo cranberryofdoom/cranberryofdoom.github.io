@@ -1,26 +1,39 @@
 <navbar></navbar>
-<div class="content" ng-controller="ProjectsCtrl as projectsCtrl">
+<script type="text/ng-template" id="modal">
+	<p>Password required.</p>
+	<div class="form-control">
+		<input ng-model="password" type="password"></input>
+		<button ng-click="submit(password)">Edit</button>
+	</div>
+</script>
+<div class="content" ng-controller="ProjectsCtrl">
 	<div class="project">
+		<button class="edit" ng-show="editButton" ng-click="edit()">
+			<i class="fa fa-lg" ng-class="{'fa-floppy-o': editable, 'fa-pencil': !editable}" ng-click="left(screenshot.photos.length)"></i>
+		</button>
 		<div class="banner-wrapper">
-			<img ng-hide="{{projectsCtrl.project.thumbnail_url}}" src="{{projectsCtrl.project.thumbnail_url}}">
+			<img ng-hide="{{project.thumbnail_url}}" src="{{project.thumbnail_url}}">
 			<div class="text-wrapper">
-				<h1>{{projectsCtrl.project.name}}</h1>
-				<p>{{projectsCtrl.project.brief}}</p>
+				<h1>{{project.name}}</h1>
+				<p>{{project.brief}}</p>
 				<div class="links">
-					<a ng-show="projectsCtrl.project.website" href="{{projectsCtrl.project.website}}"><i class="fa fa-external-link fa-lg"></i></a>
-					<a ng-show="projectsCtrl.project.github" href="{{projectsCtrl.project.github}}"><i class="fa fa-github-alt fa-lg"></i></a>
+					<a ng-show="project.website" href="{{project.website}}"><i class="fa fa-external-link fa-lg"></i></a>
+					<a ng-show="project.github" href="{{project.github}}"><i class="fa fa-github-alt fa-lg"></i></a>
 				</div>
 				<hr>
 			</div>
 		</div>
 		<div class="body-wrapper">
-			<div ng-repeat="contribution in projectsCtrl.project.contributions | filterByLeadership">
-				<h2>
+			<div ng-repeat="contribution in project.contributions | filterByLeadership">
+				<h2 contenteditable="true" ng-class="{editable: editable}">
 					{{contribution.kind}}
-					<a ng-show="projectsCtrl.project.website && contribution.kind == 'Web Design'" href="{{projectsCtrl.project.website}}"><i class="fa fa-external-link"></i></a>
-					<a ng-show="projectsCtrl.project.github && contribution.tag == 'code'" href="{{projectsCtrl.project.github}}"><i class="fa fa-github-alt"></i></a>
+					<a ng-show="project.website && contribution.kind == 'Web Design'" href="{{project.website}}"><i class="fa fa-external-link"></i></a>
+					<a ng-show="project.github && contribution.tag == 'code'" href="{{project.github}}"><i class="fa fa-github-alt"></i></a>
 				</h2>
-				<p>{{contribution.description}}</p>
+				<div ng-class="{editable: editable}">
+					<p contenteditable="{{editable}}" ng-model="contribution.description" ng-blur="update(project)" project-index="" strip-br="true"></p>
+					<button ng-show="!contribution.description && !contribution.screenshots && editable">Add Content</button>
+				</div>
 				<div class="row">
 					<div class="screenshots col-xs-12 col-sm-6 center-xs" ng-repeat="screenshot in contribution.screenshots">
 						<carousel class="carousel"></carousel>

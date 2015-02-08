@@ -68,10 +68,12 @@ module.exports = {
       'vendor/jquery/dist/jquery.min.map',
       'vendor/jquery/dist/jquery.min.js',
       'vendor/firebase/firebase.js',
-      'vendor/angularfire/dist/angularfire.min.js'
+      'vendor/angularfire/dist/angularfire.min.js',
+      'vendor/ngDialog/js/ngDialog.min.js'
     ],
     css: [
-      'vendor/flexboxgrid/flexboxgrid.min.css'
+      'vendor/flexboxgrid/flexboxgrid.min.css',
+      'vendor/ngDialog/css/ngDialog.min.css'
     ],
     assets: []
   },

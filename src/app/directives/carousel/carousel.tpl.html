@@ -1,5 +1,4 @@
 <div class="carousel-inner">
-	{{show}}
 	<div class="photo" ng-repeat="photo in screenshot.photos">
 		<img ng-class="{active: show == $index}" data-index="{{$index}}" src="{{photo.image_url}}">
 	</div>

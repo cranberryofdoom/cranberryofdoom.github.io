@@ -1,11 +1,12 @@
 angular.module('ashley', [
   'templates-app',
   'templates-common',
-  'ashley.home',
-  'ashley.projects',
   'ashley.firebase.key',
-  'ui.router',
   'firebase',
+  'ashley.routes',
+  'ashley.filters',
+  'ashley.projects',
+  'ui.router',
   'navbar',
   'back',
   'scrollTop'
@@ -15,10 +16,9 @@ angular.module('ashley', [
   $urlRouterProvider.otherwise('/home');
 })
 
-.run(function run() {})
+.run(function run($rootScope) {})
 
 .controller('AppCtrl', function AppCtrl($scope, $rootScope, $location) {
-  $rootScope.tag = null;
   $scope.bottom = false;
   $scope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams) {
     if (angular.isDefined(toState.data.pageTitle)) {

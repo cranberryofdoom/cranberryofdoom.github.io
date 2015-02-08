@@ -2,7 +2,7 @@ angular.module('carousel', [])
 	.directive('carousel', function() {
 		return {
 			restrict: 'E',
-			templateUrl: 'directives/carousel.tpl.html',
+			templateUrl: 'directives/carousel/carousel.tpl.html',
 			controller: function($scope) {
 				$scope.show = 0;
 				$scope.right = function(numPhotos) {
