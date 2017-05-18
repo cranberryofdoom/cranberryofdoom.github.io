@@ -29,12 +29,17 @@ p {
 .link-catagories {
   display: flex;
   flex-direction: row;
-  max-width: 336px;
+  max-width: 450px;
   text-align: center;
 }
 
+.links {
+  display: flex;
+  flex-direction: column;
+}
+
 .link-catagory {
-  width: 100px;
+  width: 150px;
 }
 
 .link-catagory a {
