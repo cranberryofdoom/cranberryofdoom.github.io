@@ -13,11 +13,18 @@ body {
   position: absolute;
   top: 36px;
   left: 36px;
-  text-transform: uppercase;
-  text-decoration: none;
+}
+
+a {
+  color: #6EC6B1;
   font-weight: 900;
   font-size: 0.75em;
-  color: #6EC6B1;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #49A992;
 }
 
 img {
@@ -80,6 +87,14 @@ p {
   outline: none;
   margin-bottom: 24px;
   cursor: pointer;
+}
+
+.key-press:hover {
+  color: #49A992;
+}
+
+.key-press:hover span {
+  border: 1px solid #49A992;
 }
 
 .key-press:active span {
