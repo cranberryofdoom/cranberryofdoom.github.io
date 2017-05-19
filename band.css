@@ -89,14 +89,17 @@ p {
   cursor: pointer;
 }
 
+.key-press.active,
 .key-press:hover {
   color: #49A992;
 }
 
+.key-press.active span,
 .key-press:hover span {
   border: 1px solid #49A992;
 }
 
+.key-press.active span,
 .key-press:active span {
   color: white;
   background-color: #6EC6B1;

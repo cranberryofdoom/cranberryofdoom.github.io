@@ -1,6 +1,78 @@
-var corgiKeys = [7, 8, 9, 0];
-var turtleKeys = [1, 2, 3, 4, 5, 6];
-var octopusKeys = ['w', 'a', 's', 'd', 'f', 'g', 'left', 'right'];
+var corgiKeys = [{
+  key: 7,
+  keyCode: 55,
+  type: 'corgi',
+}, {
+  key: 8,
+  keyCode: 56,
+  type: 'corgi',
+}, {
+  key: 9,
+  keyCode: 57,
+  type: 'corgi',
+}, {
+  key: 0,
+  keyCode: 48,
+  type: 'corgi',
+},];
+var turtleKeys = [{
+  key: 1,
+  keyCode: 49,
+  type: 'turtle',
+}, {
+  key: 2,
+  keyCode: 50,
+  type: 'turtle',
+}, {
+  key: 3,
+  keyCode: 51,
+  type: 'turtle',
+}, {
+  key: 4,
+  keyCode: 52,
+  type: 'turtle',
+}, {
+  key: 5,
+  keyCode: 53,
+  type: 'turtle',
+}, {
+  key: 6,
+  keyCode: 54,
+  type: 'turtle',
+}];
+var octopusKeys = [{
+  key: 'w',
+  keyCode: 87,
+  type: 'octopus',
+}, {
+  key: 'a',
+  keyCode: 65,
+  type: 'octopus',
+}, {
+  key: 's',
+  keyCode: 83,
+  type: 'octopus',
+}, {
+  key: 'd',
+  keyCode: 68,
+  type: 'octopus',
+}, {
+  key: 'f',
+  keyCode: 70,
+  type: 'octopus',
+}, {
+  key: 'g',
+  keyCode: 71,
+  type: 'octopus',
+}, {
+  key: 'left',
+  keyCode: 37,
+  type: 'octopus',
+}, {
+  key: 'right',
+  keyCode: 39,
+  type: 'octopus',
+}];
 var allKeys = [].concat(corgiKeys, turtleKeys, octopusKeys);
 
 function playAudio(key) {
@@ -8,11 +80,32 @@ function playAudio(key) {
   if (audio) audio.play();
 }
 
-document.addEventListener('DOMContentLoaded', function() {
-  allKeys.map(function(key) {
-    var element = document.getElementById('button' + key);
-    if (element) {
-      element.addEventListener('click', function() { playAudio(key); }, false);
+function eventKeyDown(event) {
+  var keyCode = event.keyCode;
+  allKeys.map(function(keyObject) {
+    if (keyCode === keyObject.keyCode) {
+      playAudio(keyObject.key);
+      document.getElementById('button' + keyObject.key).classList.add('active');
     }
   });
+}
+
+function eventKeyUp(event) {
+  var keyCode = event.keyCode;
+  allKeys.map(function(keyObject) {
+    if (keyCode === keyObject.keyCode) {
+      document.getElementById('button' + keyObject.key).classList.remove('active');
+    }
+  });
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  allKeys.map(function(keyObject) {
+    var element = document.getElementById('button' + keyObject.key);
+    if (element) {
+      element.addEventListener('click', function() { playAudio(keyObject.key); }, false);
+    }
+  });
+  document.addEventListener('keydown', eventKeyDown, false);
+  document.addEventListener('keyup', eventKeyUp, false);
 });
