@@ -1,18 +1,18 @@
 var corgiKeys = [{
-  key: 7,
-  keyCode: 55,
+  key: 'left',
+  keyCode: 37,
   type: 'corgi',
 }, {
-  key: 8,
-  keyCode: 56,
+  key: 'up',
+  keyCode: 38,
   type: 'corgi',
 }, {
-  key: 9,
-  keyCode: 57,
+  key: 'right',
+  keyCode: 39,
   type: 'corgi',
 }, {
-  key: 0,
-  keyCode: 48,
+  key: 'down',
+  keyCode: 40,
   type: 'corgi',
 },];
 var turtleKeys = [{
@@ -65,12 +65,12 @@ var octopusKeys = [{
   keyCode: 71,
   type: 'octopus',
 }, {
-  key: 'left',
-  keyCode: 37,
+  key: 'h',
+  keyCode: 72,
   type: 'octopus',
 }, {
-  key: 'right',
-  keyCode: 39,
+  key: 'j',
+  keyCode: 74,
   type: 'octopus',
 }];
 var allKeys = [].concat(corgiKeys, turtleKeys, octopusKeys);
