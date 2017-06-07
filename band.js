@@ -78,8 +78,6 @@ var allKeys = [].concat(corgiKeys, turtleKeys, octopusKeys);
 function playAudio(key) {
   var audio = document.getElementById('audio' + key);
   if (audio) {
-    audio.pause();
-    audio.currentTime = 0;
     audio.play();
   }
 }
