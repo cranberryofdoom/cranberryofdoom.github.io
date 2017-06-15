@@ -1,5 +1,4 @@
 body {
-  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -89,6 +88,7 @@ h2 {
   flex-direction: row;
   max-width: 720px;
   text-align: center;
+  flex-shrink: 0;
 }
 
 .animal {
@@ -96,4 +96,16 @@ h2 {
   flex-direction: column;
   align-items: center;
   width: 450px;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  align-items: center;
+  padding: 72px 0;
+}
+
+.link-survey {
+  margin-top: 24px;
 }
