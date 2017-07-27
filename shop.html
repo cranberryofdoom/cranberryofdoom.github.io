@@ -1,0 +1,172 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+    <link rel="stylesheet" href="shop.css" />
+    <link href="https://fonts.googleapis.com/css?family=Oxygen:300,400,700" rel="stylesheet">
+  </head>
+  <body>
+    <a class="back" href="index.html">👈 Back</a>
+    <div class="header">
+      <h1>🙌 Donate.</h1>
+      <p>I like making art & donating the all the proceeds to charity.</p>
+    </div>
+    <div class="products">
+      <div class="product" id='product-component-85ff29783f3'></div>
+    </div>
+    <script type="text/javascript">
+    /*<![CDATA[*/
+
+    (function () {
+      var scriptURL = 'https://sdks.shopifycdn.com/buy-button/latest/buy-button-storefront.min.js';
+      if (window.ShopifyBuy) {
+        if (window.ShopifyBuy.UI) {
+          ShopifyBuyInit();
+        } else {
+          loadScript();
+        }
+      } else {
+        loadScript();
+      }
+
+      function loadScript() {
+        var script = document.createElement('script');
+        script.async = true;
+        script.src = scriptURL;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(script);
+        script.onload = ShopifyBuyInit;
+      }
+
+      function ShopifyBuyInit() {
+        var client = ShopifyBuy.buildClient({
+          domain: 'ashwerks.myshopify.com',
+          apiKey: 'a6b8c089d1cbaeeb1c5f1350cda02a5d',
+          appId: '6',
+        });
+
+        ShopifyBuy.UI.onReady(client).then(function (ui) {
+          ui.createComponent('product', {
+            id: [10283972808],
+            node: document.getElementById('product-component-85ff29783f3'),
+            moneyFormat: '%24%7B%7Bamount%7D%7D',
+            options: {
+      "product": {
+        "layout": "horizontal",
+        "variantId": "all",
+        "width": "100%",
+        "contents": {
+          "img": false,
+          "imgWithCarousel": true,
+          "variantTitle": false,
+          "description": true,
+          "buttonWithQuantity": true,
+          "button": false,
+          "quantity": false
+        },
+        "styles": {
+          "product": {
+            "text-align": "left",
+            "@media (min-width: 601px)": {
+              "max-width": "100%",
+              "margin-left": "0",
+              "margin-bottom": "50px"
+            }
+          },
+          "button": {
+            "background-color": "#6ec6b1",
+            ":hover": {
+              "background-color": "#63b29f"
+            },
+            ":focus": {
+              "background-color": "#63b29f"
+            }
+          },
+          "title": {
+            "font-size": "26px"
+          },
+          "price": {
+            "font-size": "18px"
+          },
+          "compareAt": {
+            "font-size": "15px"
+          }
+        }
+      },
+      "cart": {
+        "contents": {
+          "button": true
+        },
+        "styles": {
+          "button": {
+            "background-color": "#6ec6b1",
+            ":hover": {
+              "background-color": "#63b29f"
+            },
+            ":focus": {
+              "background-color": "#63b29f"
+            }
+          },
+          "footer": {
+            "background-color": "#ffffff"
+          }
+        }
+      },
+      "modalProduct": {
+        "contents": {
+          "img": false,
+          "imgWithCarousel": true,
+          "variantTitle": false,
+          "buttonWithQuantity": true,
+          "button": false,
+          "quantity": false
+        },
+        "styles": {
+          "product": {
+            "@media (min-width: 601px)": {
+              "max-width": "100%",
+              "margin-left": "0px",
+              "margin-bottom": "0px"
+            }
+          },
+          "button": {
+            "background-color": "#6ec6b1",
+            ":hover": {
+              "background-color": "#63b29f"
+            },
+            ":focus": {
+              "background-color": "#63b29f"
+            }
+          }
+        }
+      },
+      "toggle": {
+        "styles": {
+          "toggle": {
+            "background-color": "#6ec6b1",
+            ":hover": {
+              "background-color": "#63b29f"
+            },
+            ":focus": {
+              "background-color": "#63b29f"
+            }
+          }
+        }
+      },
+      "productSet": {
+        "styles": {
+          "products": {
+            "@media (min-width: 601px)": {
+              "margin-left": "-20px"
+            }
+          }
+        }
+      }
+    }
+          });
+        });
+      }
+    })();
+    /*]]>*/
+    </script>
+  </body>
+</html>
