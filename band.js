@@ -1,84 +1,98 @@
 var corgiKeys = [{
   key: 'left',
   keyCode: 37,
-  type: 'corgi',
 }, {
   key: 'up',
   keyCode: 38,
-  type: 'corgi',
 }, {
   key: 'right',
   keyCode: 39,
-  type: 'corgi',
 }, {
   key: 'down',
   keyCode: 40,
-  type: 'corgi',
 },];
 var turtleKeys = [{
   key: 1,
   keyCode: 49,
-  type: 'turtle',
 }, {
   key: 2,
   keyCode: 50,
-  type: 'turtle',
 }, {
   key: 3,
   keyCode: 51,
-  type: 'turtle',
 }, {
   key: 4,
   keyCode: 52,
-  type: 'turtle',
 }, {
   key: 5,
   keyCode: 53,
-  type: 'turtle',
 }, {
   key: 6,
   keyCode: 54,
-  type: 'turtle',
 }];
 var octopusKeys = [{
   key: 'w',
   keyCode: 87,
-  type: 'octopus',
+  animal: 'octo',
 }, {
   key: 'a',
   keyCode: 65,
-  type: 'octopus',
+  animal: 'octo',
 }, {
   key: 's',
   keyCode: 83,
-  type: 'octopus',
+  animal: 'octo',
 }, {
   key: 'd',
   keyCode: 68,
-  type: 'octopus',
+  animal: 'octo',
 }, {
   key: 'f',
   keyCode: 70,
-  type: 'octopus',
+  animal: 'octo',
 }, {
   key: 'g',
   keyCode: 71,
-  type: 'octopus',
+  animal: 'octo',
 }, {
   key: 'h',
   keyCode: 72,
-  type: 'octopus',
+  animal: 'octo',
 }, {
   key: 'j',
   keyCode: 74,
-  type: 'octopus',
+  animal: 'octo',
 }];
-var allKeys = [].concat(corgiKeys, turtleKeys, octopusKeys);
+var giraffeKeys = [{
+  key: 'z',
+  keyCode: 90,
+}, {
+  key: 'x',
+  keyCode: 88,
+}, {
+  key: 'c',
+  keyCode: 67,
+}, {
+  key: 'v',
+  keyCode: 86,
+}];
+var allKeys = [].concat(corgiKeys, turtleKeys, octopusKeys, giraffeKeys);
+var keysDown = {};
 
 function playAudio(key) {
   var audio = document.getElementById('audio' + key);
   if (audio) {
+    audio.pause();
+    audio.currentTime = 0;
     audio.play();
+  }
+}
+
+function resetAudio(key) {
+  var audio = document.getElementById('audio' + key);
+  if (audio) {
+    audio.pause();
+    audio.currentTime = 0;
   }
 }
 
@@ -86,8 +100,11 @@ function eventKeyDown(event) {
   var keyCode = event.keyCode;
   allKeys.map(function(keyObject) {
     if (keyCode === keyObject.keyCode) {
-      playAudio(keyObject.key);
-      document.getElementById('button' + keyObject.key).classList.add('active');
+      if (!keysDown[keyCode]) {
+        keysDown[keyCode] = true;
+        playAudio(keyObject.key);
+        document.getElementById('button' + keyObject.key).classList.add('active');
+      }
     }
   });
 }
@@ -96,6 +113,9 @@ function eventKeyUp(event) {
   var keyCode = event.keyCode;
   allKeys.map(function(keyObject) {
     if (keyCode === keyObject.keyCode) {
+      if (keysDown[keyCode]) {
+        keysDown[keyCode] = false;
+      }
       document.getElementById('button' + keyObject.key).classList.remove('active');
     }
   });

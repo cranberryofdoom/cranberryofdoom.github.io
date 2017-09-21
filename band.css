@@ -59,12 +59,12 @@ p {
 .animal-plushies {
   display: flex;
   flex-direction: row;
-  max-width: 720px;
+  max-width: 900px;
   text-align: center;
 }
 
 .animal {
-  width: 240px;
+  width: 260px;
 }
 
 .keys {
