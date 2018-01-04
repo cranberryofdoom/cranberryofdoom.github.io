@@ -1,0 +1,117 @@
+body {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Oxygen', sans-serif;
+  color: #333;
+  position: relative;
+}
+
+.back {
+  position: absolute;
+  top: 36px;
+  left: 36px;
+}
+
+a {
+  color: #6EC6B1;
+  font-weight: 900;
+  font-size: 0.75em;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #49A992;
+}
+
+img {
+  margin-bottom: 24px;
+  width: 250px;
+  height: auto;
+}
+
+img.small {
+  width: 120px;
+  margin-top: 0;
+  margin-top: 12px;
+  margin-bottom: -12px;
+}
+
+h1 {
+  margin: 0;
+  font-size: 3em;
+  font-weight: 900;
+}
+
+h2 {
+  font-weight: 500;
+}
+
+p {
+  font-weight: 300;
+  color: #aaa;
+  font-size: 0.75em;
+}
+
+.animal-plushies {
+  display: flex;
+  flex-direction: row;
+  max-width: 900px;
+  text-align: center;
+}
+
+.animal {
+  width: 260px;
+}
+
+.keys {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.key-press {
+  text-transform: uppercase;
+  text-decoration: none;
+  font-weight: 900;
+  font-size: 0.75em;
+  color: #6EC6B1;
+  line-height: 1.5em;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  margin-bottom: 24px;
+  cursor: pointer;
+}
+
+.key-press.active,
+.key-press:hover {
+  color: #49A992;
+}
+
+.key-press.active span,
+.key-press:hover span {
+  border: 1px solid #49A992;
+}
+
+.key-press.active span,
+.key-press:active span {
+  color: white;
+  background-color: #6EC6B1;
+}
+
+.key-press span {
+  margin-left: 4px;
+  border: 1px solid #6EC6B1;
+  padding: 4px 6px;
+  border-radius: 2px;
+}
+
+.survey {
+  margin-top: 24px;
+}
