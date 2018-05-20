@@ -30,38 +30,55 @@ var turtleKeys = [{
   key: 6,
   keyCode: 54,
 }];
-var octopusKeys = [{
+var babyOctopusKeys = [{
   key: 'w',
   keyCode: 87,
-  animal: 'octo',
 }, {
   key: 'a',
   keyCode: 65,
-  animal: 'octo',
 }, {
   key: 's',
   keyCode: 83,
-  animal: 'octo',
 }, {
   key: 'd',
   keyCode: 68,
-  animal: 'octo',
 }, {
   key: 'f',
   keyCode: 70,
-  animal: 'octo',
 }, {
   key: 'g',
   keyCode: 71,
-  animal: 'octo',
 }, {
   key: 'h',
   keyCode: 72,
-  animal: 'octo',
 }, {
   key: 'j',
   keyCode: 74,
-  animal: 'octo',
+}];
+var mommaOctopusKeys = [{
+  key: 'e',
+  keyCode: 69,
+}, {
+  key: 'r',
+  keyCode: 82,
+}, {
+  key: 't',
+  keyCode: 84,
+}, {
+  key: 'y',
+  keyCode: 89,
+}, {
+  key: 'u',
+  keyCode: 85,
+}, {
+  key: 'i',
+  keyCode: 73,
+}, {
+  key: 'o',
+  keyCode: 79,
+}, {
+  key: 'p',
+  keyCode: 80,
 }];
 var giraffeKeys = [{
   key: 'z',
@@ -76,7 +93,7 @@ var giraffeKeys = [{
   key: 'v',
   keyCode: 86,
 }];
-var allKeys = [].concat(corgiKeys, turtleKeys, octopusKeys, giraffeKeys);
+var allKeys = [].concat(corgiKeys, turtleKeys, babyOctopusKeys, mommaOctopusKeys, giraffeKeys);
 var keysDown = {};
 
 function playAudio(key) {
@@ -99,12 +116,12 @@ function resetAudio(key) {
 function eventKeyDown(event) {
   var keyCode = event.keyCode;
   allKeys.map(function(keyObject) {
+    if (event.repeat) {
+      return
+    }
     if (keyCode === keyObject.keyCode) {
-      if (!keysDown[keyCode]) {
-        keysDown[keyCode] = true;
-        playAudio(keyObject.key);
-        document.getElementById('button' + keyObject.key).classList.add('active');
-      }
+      playAudio(keyObject.key);
+      document.getElementById('button' + keyObject.key).classList.add('active');
     }
   });
 }
@@ -113,9 +130,6 @@ function eventKeyUp(event) {
   var keyCode = event.keyCode;
   allKeys.map(function(keyObject) {
     if (keyCode === keyObject.keyCode) {
-      if (keysDown[keyCode]) {
-        keysDown[keyCode] = false;
-      }
       document.getElementById('button' + keyObject.key).classList.remove('active');
     }
   });

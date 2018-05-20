@@ -35,8 +35,13 @@ img {
 
 img.small {
   width: 120px;
-  margin-top: 0;
   margin-top: 12px;
+  margin-bottom: -12px;
+}
+
+img.large {
+  width: 150px;
+  margin-top: 0px;
   margin-bottom: -12px;
 }
 
@@ -59,7 +64,6 @@ p {
 .animal-plushies {
   display: flex;
   flex-direction: row;
-  max-width: 900px;
   text-align: center;
 }
 
