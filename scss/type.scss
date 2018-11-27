@@ -1,0 +1,33 @@
+h1 {
+  margin: 0;
+  font-size: 3em;
+  font-weight: 900;
+  line-height: 1.25em;
+}
+
+h2 {
+  font-weight: 500;
+}
+
+p,
+li {
+  font-weight: 300;
+  color: $color-grey;
+  font-size: 0.75em;
+  line-height: 1.5em;
+}
+
+a {
+  text-transform: uppercase;
+  text-decoration: none;
+  font-weight: 900;
+  font-size: 0.75em;
+  color: $color-mint;
+  line-height: 1.5em;
+  transition: 0.2s;
+
+  &:hover {
+    transition: 0.2s;
+    color: darken($color-mint, 10%);
+  }
+}

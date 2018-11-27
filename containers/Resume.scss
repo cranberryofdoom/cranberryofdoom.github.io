@@ -1,0 +1,81 @@
+@import "../scss/base.scss";
+
+.resume-container {
+  @include container(4);
+  align-items: center;
+  background: $color-mint;
+
+  @media (max-width: base-unitify(128)) {
+    @include padding(2);
+  }
+
+  h3,
+  h4,
+  p {
+    margin: 0;
+  }
+
+  h2 {
+    padding-bottom: base-unitify(1);
+    border-bottom: 1px solid $color-mint;
+  }
+
+  h3 {
+    margin-bottom: base-unitify(2);
+  }
+
+  h4 {
+    font-weight: 500;
+  }
+
+  p,
+  li {
+    color: $color-charcoal;
+    font-size: 0.825em;
+    line-height: 1.75em;
+  }
+
+  .resume {
+    @include container();
+    @include row-gutter(2);
+    @include padding(8, 12);
+    background: #fff;
+    box-shadow: 0 4px 12px transparentize($color-charcoal, 0.8);
+    max-width: base-unitify(128);
+    border-radius: 12px;
+
+    @media (max-width: base-unitify(128)) {
+      @include padding(8, 6);
+    }
+  }
+
+  .resume-header {
+    @include container();
+    @include row-gutter(2);
+  }
+
+  section {
+    @include container();
+    @include row-gutter(3);
+  }
+
+  header {
+    @include container();
+    @include row-gutter(1);
+  }
+
+  article {
+    @include container();
+    @include row-gutter(2);
+  }
+
+  .job-summary {
+    @include container();
+    @include row-gutter(1.5);
+  }
+
+  .job-details {
+    color: $color-grey;
+    font-size: 0.825em;
+  }
+}

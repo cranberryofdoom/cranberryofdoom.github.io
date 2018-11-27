@@ -1,0 +1,72 @@
+$base-unit: 6px;
+
+@function base-unitify($arg) {
+  @if type-of($arg) !=number {
+    @return $arg;
+  }
+
+  @else {
+    @return $arg * $base-unit;
+  }
+}
+
+@mixin margin($top, $right: "", $bottom: "", $left: "") {
+  margin: #{base-unitify($top)} #{base-unitify($right)} #{base-unitify($bottom)} #{base-unitify($left)};
+}
+
+@mixin padding($top, $right: "", $bottom: "", $left: "") {
+  padding: base-unitify($top) #{base-unitify($right)} #{base-unitify($bottom)} #{base-unitify($left)};
+}
+
+@mixin columns($column-widths...) {
+  flex-direction: row;
+
+  @if length($column-widths)==1 {
+    flex-wrap: wrap;
+
+    >:nth-child(n) {
+      width: $column-widths;
+      min-width: $column-widths;
+
+      @media #{$media-query-small} {
+        width: 100%;
+      }
+    }
+  }
+
+  @else if (length($column-widths) > 1) {
+    @for $i from 1 through length($column-widths) {
+      >:nth-child(#{$i}) {
+        width: nth($column-widths, $i);
+
+        @media #{$media-query-small} {
+          width: 100%;
+        }
+      }
+    }
+  }
+}
+
+@mixin col-gutter($gutter: 0, $isReversed: false) {
+  $direction: if($isReversed, 'left', 'right');
+  >:not(:last-child) {
+    margin-#{$direction}: base-unitify($gutter);
+  }
+}
+
+@mixin row-gutter($gutter: 0, $isGrid: false) {
+  >:not(:last-child) {
+    margin-bottom: base-unitify($gutter);
+  }
+}
+
+@mixin container($padding: 0, $margin:"") {
+  display: flex;
+  flex-direction: column;
+
+  @if $margin !="" {
+    @include margin($margin);
+  }
+
+  @include padding($padding);
+}
