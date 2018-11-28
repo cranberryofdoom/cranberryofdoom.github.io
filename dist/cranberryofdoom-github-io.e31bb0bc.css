@@ -136,6 +136,7 @@ a:hover {
   height: 100vh;
   position: relative;
   align-items: center;
+  overflow-y: hidden;
 }
 @media (max-width: 768px) {
   .resume-container {
@@ -288,7 +289,7 @@ a:hover {
   transform-origin: center;
 }
 .sprinkles-component svg {
-  transform: rotate(53deg);
+  transform: rotate(162deg);
 }h1 {
   margin: 0;
   font-size: 3em;
