@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import moment from "moment";
 import "./Resume.scss";
+import Sprinkles from "../components/Sprinkles";
 
 const jobs = [
   {
@@ -24,7 +25,7 @@ const jobs = [
           "https://paper.dropbox.com/doc/JAM-Frontend-Web-Overview--ASm9NJQHmAwbpFvVO3_MYQptAg-gSOdAxWwHo4s9Yu35i8G0"
       },
       {
-        type: "Talk: Video Controls",
+        type: "React Video Controls Tutorial",
         url:
           "https://paper.dropbox.com/doc/Video-Player-Controls-rUiNUVgb7v28U6Jxhjfwi"
       }
@@ -106,6 +107,10 @@ const features = [
     date: moment("2018-05"),
     links: [
       {
+        type: "Gallery",
+        url: "https://twitter.com/its_ashworks/status/997628269406007297"
+      },
+      {
         type: "Project",
         url: "https://makerfaire.com/maker/entry/65202/edit/"
       }
@@ -128,7 +133,7 @@ const features = [
     date: moment("2018-03"),
     links: [
       {
-        type: "Recap",
+        type: "Gallery",
         url: "https://twitter.com/its_ashworks/status/975132496084975616"
       },
       {
@@ -143,6 +148,10 @@ const features = [
     date: moment("2017-09"),
     links: [
       {
+        type: "Gallery",
+        url: "https://twitter.com/its_ashworks/status/911672643719499779"
+      },
+      {
         type: "Project",
         url: "https://makerfaire.com/maker/entry/62904/edit/"
       }
@@ -152,6 +161,10 @@ const features = [
     where: "Bay Area Makerfaire",
     date: moment("2017-05"),
     links: [
+      {
+        type: "Gallery",
+        url: "https://twitter.com/its_ashworks/status/865734233121312768"
+      },
       {
         type: "Project",
         url: "https://makerfaire.com/maker/entry/60015/edit/"
@@ -164,96 +177,104 @@ export default class Resume extends Component {
   render() {
     return (
       <div className="resume-container">
-        <div className="resume">
-          <div className="resume-header">
-            <h1>Ashley Qian</h1>
-            <div className="links row">
-              <a href="https://github.com/cranberryofdoom">Github</a>
-              <a href="https://www.linkedin.com/in/ashleyqian/">LinkedIn</a>
-              <a href="mailto:ashley.qian.0@gmail.com">Email</a>
-              <a href="/">Website</a>
+        <Sprinkles />
+        <div className="resume-wrapper">
+          <div className="resume">
+            <div className="resume-header">
+              <h1>Ashley Qian</h1>
+              <div className="links row">
+                <a href="https://github.com/cranberryofdoom">Github</a>
+                <a href="https://www.linkedin.com/in/ashleyqian/">LinkedIn</a>
+                <a href="mailto:ashley.qian.0@gmail.com">Email</a>
+                <a href="/">Website</a>
+              </div>
             </div>
-          </div>
-          <section>
-            <h2>Experience</h2>
-            {jobs.map(job => {
-              const start = job.start;
-              const end = job.end ? job.end : moment();
-              const duration = moment.duration(end.diff(start));
-              const years = duration.years();
-              const months = duration.months();
-              return (
-                <article className="job">
-                  <header className="job-header">
-                    <h3>{job.title}</h3>
-                    <h4>{job.company}</h4>
-                    <div className="job-details">
-                      <span>
-                        {job.start.format("MMM YYYY")} —{" "}
-                        {job.end ? job.end.format("MMM YYYY") : "Present"}
-                      </span>
-                      <span> · </span>
-                      <span>
-                        {years ? `${years} yr${years === 1 ? "" : "s"} ` : ""}
-                        {months ? `${months} mo${months === 1 ? "" : "s"}` : ""}
-                      </span>
+            <section>
+              <h2>Experience</h2>
+              {jobs.map(job => {
+                const start = job.start;
+                const end = job.end ? job.end : moment();
+                const duration = moment.duration(end.diff(start));
+                const years = duration.years();
+                const months = duration.months();
+                return (
+                  <article className="job">
+                    <header className="job-header">
+                      <h3>{job.title}</h3>
+                      <h4>{job.company}</h4>
+                      <div className="job-details">
+                        <span>
+                          {job.start.format("MMM YYYY")} —{" "}
+                          {job.end ? job.end.format("MMM YYYY") : "Present"}
+                        </span>
+                        <span> · </span>
+                        <span>
+                          {years ? `${years} yr${years === 1 ? "" : "s"} ` : ""}
+                          {months
+                            ? `${months} mo${months === 1 ? "" : "s"}`
+                            : ""}
+                        </span>
+                      </div>
+                    </header>
+                    <div className="job-summary">
+                      {job.summary.map(point => (
+                        <p>{point}</p>
+                      ))}
                     </div>
-                  </header>
-                  <div className="job-summary">
-                    {job.summary.map(point => (
-                      <p>{point}</p>
-                    ))}
+                    {job.links && (
+                      <div className="links row">
+                        {job.links.map(link => (
+                          <a href={link.url}>{link.type}</a>
+                        ))}
+                      </div>
+                    )}
+                  </article>
+                );
+              })}
+            </section>
+            <section>
+              <h2>Education</h2>
+              <article className="school">
+                <header>
+                  <h3>Duke University</h3>
+                  <div className="job-details">Class of 2015</div>
+                </header>
+                <p>B.A. Computer Science & Minor in Woman’s Studies</p>
+              </article>
+            </section>
+            <section>
+              <h2>Talks</h2>
+              {talks.map(talk => (
+                <article>
+                  <h3>{talk.event}</h3>
+                  <div className="job-details">
+                    {talk.date.format("MMM YYYY")}
                   </div>
                   <div className="links row">
-                    {job.links &&
-                      job.links.map(link => <a href={link.url}>{link.type}</a>)}
+                    {talk.links.map(link => (
+                      <a href={link.url}>{link.type}</a>
+                    ))}
                   </div>
                 </article>
-              );
-            })}
-          </section>
-          <section>
-            <h2>Education</h2>
-            <article className="school">
-              <header>
-                <h3>Duke University</h3>
-                <div className="job-details">Class of 2015</div>
-              </header>
-              <p>B.A. Computer Science & Minor in Woman’s Studies</p>
-            </article>
-          </section>
-          <section>
-            <h2>Talks</h2>
-            {talks.map(talk => (
-              <article>
-                <h3>{talk.event}</h3>
-                <div className="job-details">
-                  {talk.date.format("MMM YYYY")}
-                </div>
-                <div className="links row">
-                  {talk.links.map(link => (
-                    <a href={link.url}>{link.type}</a>
-                  ))}
-                </div>
-              </article>
-            ))}
-          </section>
-          <section>
-            <h2>Featured</h2>
-            {features.map(feature => (
-              <article>
-                <h3>{feature.where}</h3>
-                <div className="job-details">
-                  {feature.date.format("MMM YYYY")}
-                </div>
-                <div className="links row">
-                  {feature.links.map(link => (
-                    <a href={link.url}>{link.type}</a>
-                  ))}
-                </div>
-              </article>
-            ))}
-          </section>
+              ))}
+            </section>
+            <section>
+              <h2>Featured In</h2>
+              {features.map(feature => (
+                <article>
+                  <h3>{feature.where}</h3>
+                  <div className="job-details">
+                    {feature.date.format("MMM YYYY")}
+                  </div>
+                  <div className="links row">
+                    {feature.links.map(link => (
+                      <a href={link.url}>{link.type}</a>
+                    ))}
+                  </div>
+                </article>
+              ))}
+            </section>
+          </div>
         </div>
       </div>
     );

@@ -1,9 +1,11 @@
 @import "../scss/base.scss";
 
 .resume-container {
-  @include container(4);
+  @include container();
+  width: 100vw;
+  height: 100vh;
+  position: relative;
   align-items: center;
-  background: $color-mint;
 
   @media (max-width: base-unitify(128)) {
     @include padding(2);
@@ -35,14 +37,27 @@
     line-height: 1.75em;
   }
 
+  .resume-wrapper {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    overflow-y: auto;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+
   .resume {
     @include container();
     @include row-gutter(2);
     @include padding(8, 12);
+    @include margin(8, auto);
     background: #fff;
     box-shadow: 0 4px 12px transparentize($color-charcoal, 0.8);
     max-width: base-unitify(128);
     border-radius: 12px;
+    flex-shrink: 0;
 
     @media (max-width: base-unitify(128)) {
       @include padding(8, 6);

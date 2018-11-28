@@ -7,11 +7,14 @@
   "license": "MIT",
   "dependencies": {
     "classnames": "^2.2.6",
+    "lodash": "^4.17.11",
     "moment": "^2.22.2",
+    "parcel-plugin-inlinesvg": "^0.1.0",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
     "react-hot-loader": "^4.3.12",
     "react-router-dom": "^4.3.1",
+    "react-svg-inline": "^2.1.1",
     "sass": "^1.15.1"
   },
   "devDependencies": {

@@ -5,6 +5,7 @@ body {
   @include container();
   font-family: "Oxygen", sans-serif;
   color: $color-charcoal;
+  margin: 0;
 }
 
 .window {
