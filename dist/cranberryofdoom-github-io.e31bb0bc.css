@@ -239,27 +239,6 @@ a:after {
   position: relative;
   align-items: center;
 }
-.home-container nav {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  padding: 0px;
-  flex-direction: row;
-  padding: 24px 36px;
-  background: #fff;
-  justify-content: center;
-  position: fixed;
-  top: 0;
-  z-index: 1;
-  box-shadow: 0 2px 2px rgba(51, 51, 51, 0.05);
-}
-.home-container nav > :not(:last-child) {
-  margin-right: 24px;
-}
-.home-container nav a {
-  cursor: pointer;
-  position: relative;
-}
 .home-container .links {
   display: flex;
   flex-direction: column;
@@ -535,6 +514,106 @@ a:after {
 }
 .sprinkles-component svg {
   transform: rotate(342deg);
+}h1 {
+  margin: 0;
+  font-size: 3em;
+  font-weight: 900;
+  line-height: 1.25em;
+}
+
+h1.huge {
+  font-size: 7em;
+}
+
+h2 {
+  margin: 0;
+  font-weight: 500;
+}
+
+p,
+li {
+  color: #333;
+  font-size: 0.875em;
+  line-height: 1.75em;
+}
+
+.subheader {
+  font-weight: 300;
+  color: #aaa;
+  font-size: 0.75em;
+  line-height: 1.5em;
+  margin-top: 12px;
+}
+.subheader a {
+  font-size: 1em;
+  text-transform: none;
+  font-weight: 300;
+}
+.subheader a:after {
+  bottom: 0px;
+}
+
+.subheader.huge {
+  font-size: 1.75em;
+}
+
+a {
+  text-transform: uppercase;
+  text-decoration: none;
+  font-weight: 900;
+  font-size: 0.75em;
+  color: #6EC6B1;
+  line-height: 1.5em;
+  transition: 0.2s;
+  position: relative;
+}
+a:hover {
+  transition: 0.2s;
+  color: #49b89d;
+}
+a:hover:after {
+  width: 100%;
+  background: #49b89d;
+}
+a:after {
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  content: "";
+  width: 0%;
+  height: 2px;
+  background: #6EC6B1;
+  transition: 0.2s;
+}
+
+.underline {
+  position: relative;
+}
+
+.mint {
+  color: #6EC6B1;
+}
+
+nav {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 0px;
+  flex-direction: row;
+  padding: 24px 36px;
+  background: #fff;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  z-index: 1;
+  box-shadow: 0 2px 2px rgba(51, 51, 51, 0.05);
+}
+nav > :not(:last-child) {
+  margin-right: 24px;
+}
+nav a {
+  cursor: pointer;
+  position: relative;
 }h1 {
   margin: 0;
   font-size: 3em;

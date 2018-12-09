@@ -17,6 +17,7 @@ export default class Home extends Component {
   }
 
   handleClickImage(src) {
+    console.log(src);
     this.setState({
       focusedImgSrc: src
     });

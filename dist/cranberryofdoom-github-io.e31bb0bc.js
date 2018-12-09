@@ -53443,7 +53443,39 @@ var projects = [{
 }];
 var _default = projects;
 exports.default = _default;
-},{"react":"node_modules/react/index.js","../../images/Animal-Band-Group-Photo-1.jpg":"images/Animal-Band-Group-Photo-1.jpg","../../images/Animal-Band-Group-Photo-2.jpg":"images/Animal-Band-Group-Photo-2.jpg","../../images/Animal-Band-MakeMagazine.jpg":"images/Animal-Band-MakeMagazine.jpg","../../images/Animal-Band-France24.jpg":"images/Animal-Band-France24.jpg","../../images/Animal-Band-MakerFaire-Ribbons.jpg":"images/Animal-Band-MakerFaire-Ribbons.jpg","../../images/Animal-Band-MakerFaire-1.jpg":"images/Animal-Band-MakerFaire-1.jpg","../../images/Animal-Band-MakerFaire-2.jpg":"images/Animal-Band-MakerFaire-2.jpg"}],"containers/Home.jsx":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","../../images/Animal-Band-Group-Photo-1.jpg":"images/Animal-Band-Group-Photo-1.jpg","../../images/Animal-Band-Group-Photo-2.jpg":"images/Animal-Band-Group-Photo-2.jpg","../../images/Animal-Band-MakeMagazine.jpg":"images/Animal-Band-MakeMagazine.jpg","../../images/Animal-Band-France24.jpg":"images/Animal-Band-France24.jpg","../../images/Animal-Band-MakerFaire-Ribbons.jpg":"images/Animal-Band-MakerFaire-Ribbons.jpg","../../images/Animal-Band-MakerFaire-1.jpg":"images/Animal-Band-MakerFaire-1.jpg","../../images/Animal-Band-MakerFaire-2.jpg":"images/Animal-Band-MakerFaire-2.jpg"}],"components/Navbar.scss":[function(require,module,exports) {
+var reloadCSS = require('_css_loader');
+
+module.hot.dispose(reloadCSS);
+module.hot.accept(reloadCSS);
+},{"_css_loader":"../../../.config/yarn/global/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/Navbar.jsx":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = Navbar;
+
+var _react = _interopRequireDefault(require("react"));
+
+require("./Navbar.scss");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function Navbar(_ref) {
+  var onClick = _ref.onClick;
+  return _react.default.createElement("nav", null, _react.default.createElement("a", {
+    onClick: onClick.bind(this, "work"),
+    href: "#work"
+  }, "\uD83D\uDCBB Work"), _react.default.createElement("a", {
+    onClick: onClick.bind(this, "make"),
+    href: "#make"
+  }, "\uD83C\uDFA8 Make"), _react.default.createElement("a", {
+    onClick: onClick.bind(this, "play"),
+    href: "#play"
+  }, "\u2728 Play"));
+}
+},{"react":"node_modules/react/index.js","./Navbar.scss":"components/Navbar.scss"}],"containers/Home.jsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -53466,6 +53498,8 @@ var _diy = _interopRequireDefault(require("../fixtures/projects/diy"));
 var _chameled = _interopRequireDefault(require("../fixtures/projects/chameled"));
 
 var _animalBand = _interopRequireDefault(require("../fixtures/projects/animalBand"));
+
+var _Navbar = _interopRequireDefault(require("../components/Navbar"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -53509,6 +53543,7 @@ function (_Component) {
   _createClass(Home, [{
     key: "handleClickImage",
     value: function handleClickImage(src) {
+      console.log(src);
       this.setState({
         focusedImgSrc: src
       });
@@ -53554,16 +53589,9 @@ function (_Component) {
       var focusedImgSrc = this.state.focusedImgSrc;
       return _react.default.createElement("div", {
         className: "home-container"
-      }, _react.default.createElement("nav", null, _react.default.createElement("a", {
-        onClick: this.handleScrollTo.bind(this, "work"),
-        href: "#work"
-      }, "\uD83D\uDCBB Work"), _react.default.createElement("a", {
-        onClick: this.handleScrollTo.bind(this, "make"),
-        href: "#make"
-      }, "\uD83C\uDFA8 Make"), _react.default.createElement("a", {
-        onClick: this.handleScrollTo.bind(this, "play"),
-        href: "#play"
-      }, "\u2728 Play")), _react.default.createElement("div", {
+      }, _react.default.createElement(_Navbar.default, {
+        onClick: this.handleScrollTo
+      }), _react.default.createElement("div", {
         className: "sections"
       }, _react.default.createElement("section", {
         className: "full"
@@ -53700,7 +53728,7 @@ function (_Component) {
         className: "panel"
       }, _react.default.createElement("div", {
         className: "section-content full white"
-      }, _react.default.createElement("header", null, _react.default.createElement("h1", null, "\u2728 Play"), _react.default.createElement(_Band.default, null))))));
+      }, _react.default.createElement("header", null, _react.default.createElement("h1", null, "\u2728 Play")), _react.default.createElement(_Band.default, null)))));
     }
   }]);
 
@@ -53708,7 +53736,7 @@ function (_Component) {
 }(_react.Component);
 
 exports.default = Home;
-},{"react":"node_modules/react/index.js","smoothscroll":"node_modules/smoothscroll/smoothscroll.js","./Band":"containers/Band.jsx","./Home.scss":"containers/Home.scss","../components/Sprinkles":"components/Sprinkles.jsx","../fixtures/projects/diy":"fixtures/projects/diy.js","../fixtures/projects/chameled":"fixtures/projects/chameled.js","../fixtures/projects/animalBand":"fixtures/projects/animalBand.js"}],"containers/Resume.scss":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","smoothscroll":"node_modules/smoothscroll/smoothscroll.js","./Band":"containers/Band.jsx","./Home.scss":"containers/Home.scss","../components/Sprinkles":"components/Sprinkles.jsx","../fixtures/projects/diy":"fixtures/projects/diy.js","../fixtures/projects/chameled":"fixtures/projects/chameled.js","../fixtures/projects/animalBand":"fixtures/projects/animalBand.js","../components/Navbar":"components/Navbar.jsx"}],"containers/Resume.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
@@ -54071,7 +54099,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51704" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54237" + '/');
 
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
