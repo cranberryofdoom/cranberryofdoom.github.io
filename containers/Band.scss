@@ -5,6 +5,10 @@
   @include padding(15, 20);
   align-items: center;
 
+  p {
+    color: $color-grey;
+  }
+
   .animal-plushies {
     @include container();
     @include columns();
@@ -14,6 +18,9 @@
 
   .animal {
     width: base-unitify(40);
+    @include container();
+    @include row-gutter(4);
+    align-items: center;
   }
 
   img.small {

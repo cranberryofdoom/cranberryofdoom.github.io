@@ -4,6 +4,7 @@
   @include container();
   @include columns();
   flex-flow: wrap;
+  justify-content: center;
 
   .sprinkle-wrapper {
     @include container();

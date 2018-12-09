@@ -1,0 +1,157 @@
+@import "../scss/base.scss";
+
+.home-container {
+  @include container();
+  position: relative;
+  align-items: center;
+
+  .links {
+    @include container();
+    @include columns();
+    @include col-gutter(2);
+  }
+
+  .sections {
+    @include container();
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+
+  section {
+    @include container();
+    min-height: 100vh;
+    width: 100vw;
+    flex-shrink: 0;
+  }
+
+  section.full {
+    justify-content: center;
+    align-items: center;
+
+    .section-content {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      @include container();
+      justify-content: center;
+      align-items: center;
+    }
+
+    header {
+      width: auto;
+      background: #fff;
+      @include padding(2, 6, 5, 6);
+    }
+  }
+
+  .section-content {
+    @include container();
+    @include padding(24, 18);
+    align-items: flex-start;
+  }
+
+  .section-content.white {
+    @include margin(12, 8, 8, 8);
+    background: #fff;
+    border-radius: 24px;
+    flex-grow: 1;
+    @include row-gutter(8);
+  }
+
+  .section-content.full {
+    @include padding(8, 12);
+    position: relative;
+    align-items: center;
+  }
+
+  .project-details {
+    width: base-unitify(40);
+  }
+
+  .project-date {
+    color: $color-grey;
+    font-size: 0.825em;
+    font-weight: 900;
+  }
+
+  header {
+    @include container();
+    @include row-gutter(1);
+    flex-shrink: 0;
+    text-align: center;
+    align-items: center;
+    width: 100%;
+  }
+
+  .projects {
+    @include container();
+    @include row-gutter(8);
+  }
+
+  .project {
+    @include container();
+    @include row-gutter(4);
+    max-width: base-unitify(160);
+  }
+
+  .project-iterations {
+    @include container();
+    @include columns();
+    @include col-gutter(2);
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
+
+  .project-gallery {
+    @include container();
+    @include row-gutter(8);
+
+    article {
+      overflow-x: auto;
+      @include row-gutter(1);
+    }
+  }
+
+  .project-summary {
+    @include container();
+    align-items: flex-start;
+  }
+
+  article {
+    @include container();
+    flex-shrink: 0;
+  }
+
+  .project-images {
+    @include container();
+    @include columns();
+    @include col-gutter(2);
+    align-items: flex-start;
+    flex-shrink: 0;
+
+    img {
+      width: base-unitify(70);
+      height: auto;
+      border: 1px solid transparentize(black, 0.95);
+      transition: 0.2s;
+      cursor: pointer;
+
+      &:hover {
+        transition: 0.2s;
+      }
+    }
+  }
+
+  .project-image {
+    @include container();
+    @include row-gutter(1);
+    flex-shrink: 0;
+  }
+}

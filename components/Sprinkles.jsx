@@ -38,7 +38,7 @@ export default class Sprinkles extends Component {
     const numAcross = componentWidth / baseWrapperUnit;
     const numDown = componentHeight / baseWrapperUnit;
     const totalNumSprinkles = numAcross * numDown;
-    const frequency = 0.5;
+    const frequency = 0.6;
     return (
       <div
         className="sprinkles-component"

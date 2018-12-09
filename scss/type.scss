@@ -5,16 +5,42 @@ h1 {
   line-height: 1.25em;
 }
 
+h1.huge {
+  font-size: 7em;
+}
+
 h2 {
+  margin: 0;
   font-weight: 500;
 }
 
 p,
 li {
+  color: $color-charcoal;
+  font-size: 0.875em;
+  line-height: 1.75em;
+}
+
+.subheader {
   font-weight: 300;
   color: $color-grey;
   font-size: 0.75em;
   line-height: 1.5em;
+  margin-top: base-unitify(2);
+
+  a {
+    font-size: 1em;
+    text-transform: none;
+    font-weight: 300;
+
+    &:after {
+      bottom: 0px;
+    }
+  }
+}
+
+.subheader.huge {
+  font-size: 1.75em;
 }
 
 a {
@@ -25,9 +51,34 @@ a {
   color: $color-mint;
   line-height: 1.5em;
   transition: 0.2s;
+  position: relative;
 
   &:hover {
     transition: 0.2s;
     color: darken($color-mint, 10%);
+
+    &:after {
+      width: 100%;
+      background: darken($color-mint, 10%);
+    }
   }
+
+  &:after {
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    content: "";
+    width: 0%;
+    height: 2px;
+    background: $color-mint;
+    transition: 0.2s;
+  }
+}
+
+.underline {
+  position: relative;
+}
+
+.mint {
+  color: $color-mint;
 }
