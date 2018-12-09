@@ -11,7 +11,12 @@ const ChameLEDFinalSketch4 = require("../../images/ChameLED-Final-Sketch-4.jpg")
 const projects = [
   {
     name: "ChameLED",
-    link: "https://github.com/cranberryofdoom/ChameLED",
+    links: [
+      {
+        cta: "Source Code",
+        url: "https://github.com/cranberryofdoom/ChameLED"
+      }
+    ],
     description: (
       <span>
         <p>
@@ -23,17 +28,39 @@ const projects = [
     gallery: [
       {
         description: "2018 MakeFashion Runway Show",
-        images: [ChameLEDDemo, ChameLEDPhotoshoot, ChameLEDRunwayShow]
+        images: [
+          {
+            src: ChameLEDDemo
+          },
+          {
+            src: ChameLEDPhotoshoot
+          },
+          {
+            src: ChameLEDRunwayShow
+          }
+        ]
       },
       {
         description: "Sketches",
         images: [
-          ChameLEDSketch1,
-          ChameLEDSketch2,
-          ChameLEDFinalSketch1,
-          ChameLEDFinalSketch2,
-          ChameLEDFinalSketch3,
-          ChameLEDFinalSketch4
+          {
+            src: ChameLEDSketch1
+          },
+          {
+            src: ChameLEDSketch2
+          },
+          {
+            src: ChameLEDFinalSketch1
+          },
+          {
+            src: ChameLEDFinalSketch2
+          },
+          {
+            src: ChameLEDFinalSketch3
+          },
+          {
+            src: ChameLEDFinalSketch4
+          }
         ]
       }
     ]

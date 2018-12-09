@@ -7,6 +7,8 @@ import diyProjects from "../fixtures/projects/diy";
 import chameledProjects from "../fixtures/projects/chameled";
 import animalBandProjects from "../fixtures/projects/animalBand";
 import Navbar from "../components/Navbar";
+import Landing from "../components/Landing";
+import Project from "../components/Project";
 
 export default class Home extends Component {
   constructor(props) {
@@ -52,49 +54,15 @@ export default class Home extends Component {
     const { focusedImgSrc } = this.state;
     return (
       <div className="home-container">
-        <Navbar onClick={this.handleScrollTo} />
+        <Navbar onClick={this.handleScrollTo.bind(this)} />
         <div className="sections">
-          <section className="full">
-            <Sprinkles />
-            <div className="section-content">
-              <header>
-                <h1 className="huge">Ashley Qian</h1>
-                <div className="subheader huge">
-                  <a
-                    onClick={this.handleScrollTo.bind(this, "work")}
-                    className="mint"
-                    href="#work"
-                  >
-                    Software engineer
-                  </a>{" "}
-                  by day,{" "}
-                  <a
-                    onClick={this.handleScrollTo.bind(this, "make")}
-                    className="mint"
-                    href="#make"
-                  >
-                    artist
-                  </a>{" "}
-                  by night,{" "}
-                  <a
-                    className="mint"
-                    onClick={this.handleScrollTo.bind(this, "play")}
-                    href="#play"
-                  >
-                    kid
-                  </a>{" "}
-                  at heart.
-                </div>
-              </header>
-            </div>
-          </section>
+          <Landing onClick={this.handleScrollTo.bind(this)} />
           <section
-            className="panel"
             ref={node => {
               this.workSection = node;
             }}
           >
-            <div className="section-content full white">
+            <div className="section-content full">
               <header>
                 <h1>💻 Work</h1>
                 <div className="links">
@@ -105,53 +73,22 @@ export default class Home extends Component {
                   </a>
                 </div>
               </header>
-              {diyProjects.map(project => (
-                <div className="project">
-                  <div className="project-summary">
-                    <h2>{project.name}</h2>
-                    <div className="project-description">
-                      {project.description}
-                    </div>
-                    {project.link && (
-                      <a target="blank" href={project.link}>
-                        Visit Website →
-                      </a>
-                    )}
-                  </div>
-                  <div className="project-iterations">
-                    {project.iterations.map(iteration => (
-                      <article>
-                        <div className="project-images">
-                          {iteration.images.map(image => (
-                            <div className="project-image">
-                              <div className="project-date">
-                                {iteration.date.format("YYYY")}{" "}
-                                {image.description}
-                              </div>
-                              <img
-                                onClick={this.handleClickImage.bind(
-                                  this,
-                                  image.src
-                                )}
-                                src={image.src}
-                              />
-                            </div>
-                          ))}
-                        </div>
-                      </article>
-                    ))}
-                  </div>
-                </div>
-              ))}
+              <div className="projects">
+                {diyProjects.map(project => (
+                  <Project
+                    project={project}
+                    onClickImage={this.handleClickImage.bind(this)}
+                  />
+                ))}
+              </div>
             </div>
           </section>
           <section
             ref={node => {
               this.makeSection = node;
             }}
-            className="panel"
           >
-            <div className="section-content full white">
+            <div className="section-content full">
               <header>
                 <h1>🎨 Make</h1>
                 <div className="links">
@@ -165,74 +102,16 @@ export default class Home extends Component {
               </header>
               <div className="projects">
                 {chameledProjects.map(project => (
-                  <div className="project">
-                    <div className="project-summary">
-                      <h2>{project.name}</h2>
-                      <div className="project-description">
-                        {project.description}
-                      </div>
-                      {project.link && (
-                        <a target="blank" href={project.link}>
-                          View Code →
-                        </a>
-                      )}
-                    </div>
-                    <div className="project-gallery">
-                      {project.gallery.map(group => (
-                        <article>
-                          <div className="project-date">
-                            {group.description}
-                          </div>
-                          <div className="project-images">
-                            {group.images.map(image => (
-                              <img
-                                onClick={this.handleClickImage.bind(
-                                  this,
-                                  image
-                                )}
-                                src={image}
-                              />
-                            ))}
-                          </div>
-                        </article>
-                      ))}
-                    </div>
-                  </div>
+                  <Project
+                    project={project}
+                    onClickImage={this.handleClickImage.bind(this)}
+                  />
                 ))}
                 {animalBandProjects.map(project => (
-                  <div className="project">
-                    <div className="project-summary">
-                      <h2>{project.name}</h2>
-                      <div className="project-description">
-                        {project.description}
-                      </div>
-                      {project.link && (
-                        <a target="blank" href={project.link}>
-                          View Code →
-                        </a>
-                      )}
-                    </div>
-                    <div className="project-gallery">
-                      {project.gallery.map(group => (
-                        <article>
-                          <div className="project-date">
-                            {group.description}
-                          </div>
-                          <div className="project-images">
-                            {group.images.map(image => (
-                              <img
-                                onClick={this.handleClickImage.bind(
-                                  this,
-                                  image
-                                )}
-                                src={image}
-                              />
-                            ))}
-                          </div>
-                        </article>
-                      ))}
-                    </div>
-                  </div>
+                  <Project
+                    project={project}
+                    onClickImage={this.handleClickImage.bind(this)}
+                  />
                 ))}
               </div>
             </div>
@@ -241,9 +120,8 @@ export default class Home extends Component {
             ref={node => {
               this.playSection = node;
             }}
-            className="panel"
           >
-            <div className="section-content full white">
+            <div className="section-content full">
               <header>
                 <h1>✨ Play</h1>
               </header>

@@ -53272,7 +53272,16 @@ var JAM30Filmstrip = require("../../images/JAM-3.0-Drawing-Filmstrip.png");
 
 var projects = [{
   name: "JAM",
-  link: "https://jam.com",
+  links: [{
+    cta: "Website",
+    url: "https://jam.com"
+  }, {
+    cta: "Component Library",
+    url: "https://diy.github.io/nimbus"
+  }, {
+    cta: "Architectural Overview & Design Patterns",
+    url: "https://paper.dropbox.com/doc/JAM-Frontend-Web-Overview--ASm9NJQHmAwbpFvVO3_MYQptAg-gSOdAxWwHo4s9Yu35i8G0"
+  }],
   description: _react.default.createElement("span", null, _react.default.createElement("p", null, "JAM is an online learning community where kids can be their most creative selves through online courses in subjects they can't get in school, like drawing, animation, cooking, and engineering."), _react.default.createElement("p", null, "I've been the lead frontend engineer for our core revenue-earning product since its conception in 2016, overseeing not only mission-critical areas like our core learning features and registration flows, but our internal content moderation/course administration tools, subscription management tools, and marketing pages.")),
   iterations: [{
     date: (0, _moment.default)("2018-01"),
@@ -53371,14 +53380,35 @@ var ChameLEDFinalSketch4 = require("../../images/ChameLED-Final-Sketch-4.jpg");
 
 var projects = [{
   name: "ChameLED",
-  link: "https://github.com/cranberryofdoom/ChameLED",
+  links: [{
+    cta: "Source Code",
+    url: "https://github.com/cranberryofdoom/ChameLED"
+  }],
   description: _react.default.createElement("span", null, _react.default.createElement("p", null, "ChameLED is a color changing dress made entirely from scratch with LEDs and color sensors.")),
   gallery: [{
     description: "2018 MakeFashion Runway Show",
-    images: [ChameLEDDemo, ChameLEDPhotoshoot, ChameLEDRunwayShow]
+    images: [{
+      src: ChameLEDDemo
+    }, {
+      src: ChameLEDPhotoshoot
+    }, {
+      src: ChameLEDRunwayShow
+    }]
   }, {
     description: "Sketches",
-    images: [ChameLEDSketch1, ChameLEDSketch2, ChameLEDFinalSketch1, ChameLEDFinalSketch2, ChameLEDFinalSketch3, ChameLEDFinalSketch4]
+    images: [{
+      src: ChameLEDSketch1
+    }, {
+      src: ChameLEDSketch2
+    }, {
+      src: ChameLEDFinalSketch1
+    }, {
+      src: ChameLEDFinalSketch2
+    }, {
+      src: ChameLEDFinalSketch3
+    }, {
+      src: ChameLEDFinalSketch4
+    }]
   }]
 }];
 var _default = projects;
@@ -53425,20 +53455,32 @@ var AnimalBandMakerFaire2 = require("../../images/Animal-Band-MakerFaire-2.jpg")
 
 var projects = [{
   name: "Animal Band",
-  link: "https://github.com/cranberryofdoom/ChameLED",
-  description: _react.default.createElement("span", null, _react.default.createElement("p", null, "Animal Band is a set of stuffed animals I've made that can play like musical instruments using sensors (primarily capacitive touch), Bluetooth, and MIDI.")),
+  description: _react.default.createElement("span", null, _react.default.createElement("p", null, "Animal Band is a set of stuffed animals that can play like musical instruments using sensors (primarily capacitive touch), Bluetooth, and MIDI.")),
   gallery: [{
     description: "Photoshoot",
-    images: [AnimalBandGroupPhoto1, AnimalBandGroupPhoto2]
+    images: [{
+      src: AnimalBandGroupPhoto1
+    }, {
+      src: AnimalBandGroupPhoto2
+    }]
   }, {
-    description: "France24",
-    images: [AnimalBandFrance24]
-  }, {
-    description: "Make:Magazine Volume 62",
-    images: [AnimalBandMakeMagazine]
+    description: "Featured In",
+    images: [{
+      caption: "Make:Magazine Volume 62",
+      src: AnimalBandMakeMagazine
+    }, {
+      caption: "France24",
+      src: AnimalBandFrance24
+    }]
   }, {
     description: "MakerFaires",
-    images: [AnimalBandMakerFaireRibbons, AnimalBandMakerFaire1, AnimalBandMakerFaire2]
+    images: [{
+      src: AnimalBandMakerFaireRibbons
+    }, {
+      src: AnimalBandMakerFaire1
+    }, {
+      src: AnimalBandMakerFaire2
+    }]
   }]
 }];
 var _default = projects;
@@ -53475,7 +53517,119 @@ function Navbar(_ref) {
     href: "#play"
   }, "\u2728 Play"));
 }
-},{"react":"node_modules/react/index.js","./Navbar.scss":"components/Navbar.scss"}],"containers/Home.jsx":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","./Navbar.scss":"components/Navbar.scss"}],"components/Landing.scss":[function(require,module,exports) {
+var reloadCSS = require('_css_loader');
+
+module.hot.dispose(reloadCSS);
+module.hot.accept(reloadCSS);
+},{"_css_loader":"../../../.config/yarn/global/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/Landing.jsx":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = Landing;
+
+var _react = _interopRequireDefault(require("react"));
+
+require("./Landing.scss");
+
+var _Sprinkles = _interopRequireDefault(require("./Sprinkles"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function Landing(_ref) {
+  var onClick = _ref.onClick;
+  return _react.default.createElement("section", {
+    className: "landing-component full"
+  }, _react.default.createElement(_Sprinkles.default, null), _react.default.createElement("div", {
+    className: "section-content"
+  }, _react.default.createElement("header", null, _react.default.createElement("h1", {
+    className: "huge"
+  }, "Ashley Qian"), _react.default.createElement("div", {
+    className: "subheader huge"
+  }, _react.default.createElement("a", {
+    onClick: onClick.bind(this, "work"),
+    className: "mint",
+    href: "#work"
+  }, "Software engineer"), " ", "by day,", " ", _react.default.createElement("a", {
+    onClick: onClick.bind(this, "make"),
+    className: "mint",
+    href: "#make"
+  }, "artist"), " ", "by night,", " ", _react.default.createElement("a", {
+    className: "mint",
+    onClick: onClick.bind(this, "play"),
+    href: "#play"
+  }, "kid"), " ", "at heart."))));
+}
+},{"react":"node_modules/react/index.js","./Landing.scss":"components/Landing.scss","./Sprinkles":"components/Sprinkles.jsx"}],"components/Project.scss":[function(require,module,exports) {
+var reloadCSS = require('_css_loader');
+
+module.hot.dispose(reloadCSS);
+module.hot.accept(reloadCSS);
+},{"_css_loader":"../../../.config/yarn/global/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/Project.jsx":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = Project;
+
+var _react = _interopRequireDefault(require("react"));
+
+require("./Project.scss");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function Project(_ref) {
+  var _this = this;
+
+  var project = _ref.project,
+      onClickImage = _ref.onClickImage;
+  return _react.default.createElement("div", {
+    className: "project-component"
+  }, _react.default.createElement("div", {
+    className: "project-summary"
+  }, _react.default.createElement("h2", null, project.name), _react.default.createElement("div", {
+    className: "project-description"
+  }, project.description), project.links && _react.default.createElement("div", {
+    className: "links"
+  }, project.links.map(function (link) {
+    return _react.default.createElement("a", {
+      target: "blank",
+      href: link.url
+    }, link.cta);
+  }))), project.iterations && _react.default.createElement("div", {
+    className: "project-iterations"
+  }, project.iterations.map(function (iteration) {
+    return _react.default.createElement("article", null, _react.default.createElement("div", {
+      className: "project-images"
+    }, iteration.images.map(function (image) {
+      return _react.default.createElement("div", {
+        className: "project-image"
+      }, _react.default.createElement("h5", null, iteration.date.format("YYYY"), " ", image.description), _react.default.createElement("img", {
+        onClick: onClickImage.bind(_this, image.src),
+        src: image.src
+      }));
+    })));
+  })), project.gallery && _react.default.createElement("div", {
+    className: "project-gallery"
+  }, project.gallery.map(function (group) {
+    return _react.default.createElement("article", null, _react.default.createElement("h5", null, group.description), _react.default.createElement("div", {
+      className: "project-images"
+    }, group.images.map(function (image) {
+      return _react.default.createElement("div", {
+        className: "project-image"
+      }, _react.default.createElement("img", {
+        onClick: onClickImage.bind(_this, image.src),
+        src: image.src
+      }), image.caption && _react.default.createElement("div", {
+        className: "project-caption"
+      }, image.caption));
+    })));
+  })));
+}
+},{"react":"node_modules/react/index.js","./Project.scss":"components/Project.scss"}],"containers/Home.jsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -53500,6 +53654,10 @@ var _chameled = _interopRequireDefault(require("../fixtures/projects/chameled"))
 var _animalBand = _interopRequireDefault(require("../fixtures/projects/animalBand"));
 
 var _Navbar = _interopRequireDefault(require("../components/Navbar"));
+
+var _Landing = _interopRequireDefault(require("../components/Landing"));
+
+var _Project = _interopRequireDefault(require("../components/Project"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -53590,36 +53748,17 @@ function (_Component) {
       return _react.default.createElement("div", {
         className: "home-container"
       }, _react.default.createElement(_Navbar.default, {
-        onClick: this.handleScrollTo
+        onClick: this.handleScrollTo.bind(this)
       }), _react.default.createElement("div", {
         className: "sections"
-      }, _react.default.createElement("section", {
-        className: "full"
-      }, _react.default.createElement(_Sprinkles.default, null), _react.default.createElement("div", {
-        className: "section-content"
-      }, _react.default.createElement("header", null, _react.default.createElement("h1", {
-        className: "huge"
-      }, "Ashley Qian"), _react.default.createElement("div", {
-        className: "subheader huge"
-      }, _react.default.createElement("a", {
-        onClick: this.handleScrollTo.bind(this, "work"),
-        className: "mint",
-        href: "#work"
-      }, "Software engineer"), " ", "by day,", " ", _react.default.createElement("a", {
-        onClick: this.handleScrollTo.bind(this, "make"),
-        className: "mint",
-        href: "#make"
-      }, "artist"), " ", "by night,", " ", _react.default.createElement("a", {
-        className: "mint",
-        onClick: this.handleScrollTo.bind(this, "play"),
-        href: "#play"
-      }, "kid"), " ", "at heart.")))), _react.default.createElement("section", {
-        className: "panel",
+      }, _react.default.createElement(_Landing.default, {
+        onClick: this.handleScrollTo.bind(this)
+      }), _react.default.createElement("section", {
         ref: function ref(node) {
           _this2.workSection = node;
         }
       }, _react.default.createElement("div", {
-        className: "section-content full white"
+        className: "section-content full"
       }, _react.default.createElement("header", null, _react.default.createElement("h1", null, "\uD83D\uDCBB Work"), _react.default.createElement("div", {
         className: "links"
       }, _react.default.createElement("a", {
@@ -53628,39 +53767,19 @@ function (_Component) {
         href: "https://www.linkedin.com/in/ashleyqian/"
       }, "LinkedIn"), _react.default.createElement("a", {
         href: "https://app.box.com/s/kb9fo3j7d3nawesy5dvc"
-      }, "Resume"))), _diy.default.map(function (project) {
-        return _react.default.createElement("div", {
-          className: "project"
-        }, _react.default.createElement("div", {
-          className: "project-summary"
-        }, _react.default.createElement("h2", null, project.name), _react.default.createElement("div", {
-          className: "project-description"
-        }, project.description), project.link && _react.default.createElement("a", {
-          target: "blank",
-          href: project.link
-        }, "Visit Website \u2192")), _react.default.createElement("div", {
-          className: "project-iterations"
-        }, project.iterations.map(function (iteration) {
-          return _react.default.createElement("article", null, _react.default.createElement("div", {
-            className: "project-images"
-          }, iteration.images.map(function (image) {
-            return _react.default.createElement("div", {
-              className: "project-image"
-            }, _react.default.createElement("div", {
-              className: "project-date"
-            }, iteration.date.format("YYYY"), " ", image.description), _react.default.createElement("img", {
-              onClick: _this2.handleClickImage.bind(_this2, image.src),
-              src: image.src
-            }));
-          })));
-        })));
-      }))), _react.default.createElement("section", {
+      }, "Resume"))), _react.default.createElement("div", {
+        className: "projects"
+      }, _diy.default.map(function (project) {
+        return _react.default.createElement(_Project.default, {
+          project: project,
+          onClickImage: _this2.handleClickImage.bind(_this2)
+        });
+      })))), _react.default.createElement("section", {
         ref: function ref(node) {
           _this2.makeSection = node;
-        },
-        className: "panel"
+        }
       }, _react.default.createElement("div", {
-        className: "section-content full white"
+        className: "section-content full"
       }, _react.default.createElement("header", null, _react.default.createElement("h1", null, "\uD83C\uDFA8 Make"), _react.default.createElement("div", {
         className: "links"
       }, _react.default.createElement("a", {
@@ -53674,60 +53793,21 @@ function (_Component) {
       }, "Youtube"))), _react.default.createElement("div", {
         className: "projects"
       }, _chameled.default.map(function (project) {
-        return _react.default.createElement("div", {
-          className: "project"
-        }, _react.default.createElement("div", {
-          className: "project-summary"
-        }, _react.default.createElement("h2", null, project.name), _react.default.createElement("div", {
-          className: "project-description"
-        }, project.description), project.link && _react.default.createElement("a", {
-          target: "blank",
-          href: project.link
-        }, "View Code \u2192")), _react.default.createElement("div", {
-          className: "project-gallery"
-        }, project.gallery.map(function (group) {
-          return _react.default.createElement("article", null, _react.default.createElement("div", {
-            className: "project-date"
-          }, group.description), _react.default.createElement("div", {
-            className: "project-images"
-          }, group.images.map(function (image) {
-            return _react.default.createElement("img", {
-              onClick: _this2.handleClickImage.bind(_this2, image),
-              src: image
-            });
-          })));
-        })));
+        return _react.default.createElement(_Project.default, {
+          project: project,
+          onClickImage: _this2.handleClickImage.bind(_this2)
+        });
       }), _animalBand.default.map(function (project) {
-        return _react.default.createElement("div", {
-          className: "project"
-        }, _react.default.createElement("div", {
-          className: "project-summary"
-        }, _react.default.createElement("h2", null, project.name), _react.default.createElement("div", {
-          className: "project-description"
-        }, project.description), project.link && _react.default.createElement("a", {
-          target: "blank",
-          href: project.link
-        }, "View Code \u2192")), _react.default.createElement("div", {
-          className: "project-gallery"
-        }, project.gallery.map(function (group) {
-          return _react.default.createElement("article", null, _react.default.createElement("div", {
-            className: "project-date"
-          }, group.description), _react.default.createElement("div", {
-            className: "project-images"
-          }, group.images.map(function (image) {
-            return _react.default.createElement("img", {
-              onClick: _this2.handleClickImage.bind(_this2, image),
-              src: image
-            });
-          })));
-        })));
+        return _react.default.createElement(_Project.default, {
+          project: project,
+          onClickImage: _this2.handleClickImage.bind(_this2)
+        });
       })))), _react.default.createElement("section", {
         ref: function ref(node) {
           _this2.playSection = node;
-        },
-        className: "panel"
+        }
       }, _react.default.createElement("div", {
-        className: "section-content full white"
+        className: "section-content full"
       }, _react.default.createElement("header", null, _react.default.createElement("h1", null, "\u2728 Play")), _react.default.createElement(_Band.default, null)))));
     }
   }]);
@@ -53736,7 +53816,7 @@ function (_Component) {
 }(_react.Component);
 
 exports.default = Home;
-},{"react":"node_modules/react/index.js","smoothscroll":"node_modules/smoothscroll/smoothscroll.js","./Band":"containers/Band.jsx","./Home.scss":"containers/Home.scss","../components/Sprinkles":"components/Sprinkles.jsx","../fixtures/projects/diy":"fixtures/projects/diy.js","../fixtures/projects/chameled":"fixtures/projects/chameled.js","../fixtures/projects/animalBand":"fixtures/projects/animalBand.js","../components/Navbar":"components/Navbar.jsx"}],"containers/Resume.scss":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","smoothscroll":"node_modules/smoothscroll/smoothscroll.js","./Band":"containers/Band.jsx","./Home.scss":"containers/Home.scss","../components/Sprinkles":"components/Sprinkles.jsx","../fixtures/projects/diy":"fixtures/projects/diy.js","../fixtures/projects/chameled":"fixtures/projects/chameled.js","../fixtures/projects/animalBand":"fixtures/projects/animalBand.js","../components/Navbar":"components/Navbar.jsx","../components/Landing":"components/Landing.jsx","../components/Project":"components/Project.jsx"}],"containers/Resume.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);

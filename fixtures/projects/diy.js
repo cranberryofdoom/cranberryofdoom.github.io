@@ -12,7 +12,21 @@ const JAM30Filmstrip = require("../../images/JAM-3.0-Drawing-Filmstrip.png");
 const projects = [
   {
     name: "JAM",
-    link: "https://jam.com",
+    links: [
+      {
+        cta: "Website",
+        url: "https://jam.com"
+      },
+      {
+        cta: "Component Library",
+        url: "https://diy.github.io/nimbus"
+      },
+      {
+        cta: "Architectural Overview & Design Patterns",
+        url:
+          "https://paper.dropbox.com/doc/JAM-Frontend-Web-Overview--ASm9NJQHmAwbpFvVO3_MYQptAg-gSOdAxWwHo4s9Yu35i8G0"
+      }
+    ],
     description: (
       <span>
         <p>

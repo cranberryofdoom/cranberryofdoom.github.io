@@ -1,0 +1,79 @@
+@import "../scss/base.scss";
+
+.project-component {
+  @include container();
+  @include row-gutter(4);
+  max-width: base-unitify(160);
+
+  .project-summary {
+    @include container();
+    align-items: flex-start;
+  }
+
+  article {
+    @include container();
+    flex-shrink: 0;
+  }
+
+  .project-iterations {
+    @include container();
+    @include columns();
+    @include col-gutter(2);
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    .project-image {
+      @include row-gutter(1);
+    }
+  }
+
+  .project-gallery {
+    @include container();
+    @include row-gutter(8);
+
+    article {
+      overflow-x: auto;
+      @include row-gutter(1);
+    }
+  }
+
+  .project-images {
+    @include container();
+    @include columns();
+    @include col-gutter(2);
+    align-items: flex-start;
+    flex-shrink: 0;
+
+    img {
+      width: 100%;
+      height: auto;
+      transition: 0.2s;
+      cursor: pointer;
+      border: 1px solid transparentize(black, 0.95);
+
+      &:hover {
+        transition: 0.2s;
+      }
+    }
+  }
+
+  .project-image {
+    @include container();
+    flex-shrink: 0;
+    position: relative;
+    width: base-unitify(70);
+  }
+
+  .project-caption {
+    width: base-unitify(70) - 2;
+    margin: auto;
+    @include padding(1);
+    background: transparentize(black, 0.5);
+    color: white;
+    font-size: 0.75em;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+}
