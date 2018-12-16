@@ -1,9 +1,31 @@
 @import "../scss/base.scss";
 
+$width-project: base-unitify(160);
+
 .project-component {
   @include container();
   @include row-gutter(4);
-  max-width: base-unitify(160);
+  max-width: $width-project;
+
+  @media (max-width: $width-project) {
+    @include padding(0, 4);
+    width: 100vw;
+  }
+
+  .links {
+    @include container();
+
+    @media (min-width: $width-tablet) {
+      @include columns();
+      @include col-gutter(4);
+    }
+
+    @media (max-width: $width-tablet - 1) {
+      @include row-gutter(2);
+      justify-content: flex-start;
+      align-items: flex-start;
+    }
+  }
 
   .project-summary {
     @include container();

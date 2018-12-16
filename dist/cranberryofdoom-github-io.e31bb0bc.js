@@ -53399,7 +53399,71 @@ SVGInline.cleanupSvg = function (svg) {
 };
 
 exports.default = SVGInline;
-},{"react":"node_modules/react/index.js","prop-types":"node_modules/prop-types/index.js","classnames":"node_modules/classnames/index.js"}],"components/Sprinkles.jsx":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","prop-types":"node_modules/prop-types/index.js","classnames":"node_modules/classnames/index.js"}],"components/ThrottledResize.jsx":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = require("react");
+
+var _lodash = require("lodash");
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+var ThrottledResize =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(ThrottledResize, _Component);
+
+  function ThrottledResize() {
+    _classCallCheck(this, ThrottledResize);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(ThrottledResize).apply(this, arguments));
+  }
+
+  _createClass(ThrottledResize, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var onThrottledResize = this.props.onThrottledResize;
+      if (onThrottledResize) onThrottledResize();
+      window.addEventListener("resize", (0, _lodash.throttle)(onThrottledResize, 200), false);
+    }
+  }, {
+    key: "componentWillUnmount",
+    value: function componentWillUnmount() {
+      window.removeEventListener("resize", (0, _lodash.throttle)(onThrottledResize, 200), false);
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return this.props.children;
+    }
+  }]);
+
+  return ThrottledResize;
+}(_react.Component);
+
+exports.default = ThrottledResize;
+},{"react":"node_modules/react/index.js","lodash":"node_modules/lodash/lodash.js"}],"components/Sprinkles.jsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -53414,6 +53478,8 @@ var _lodash = require("lodash");
 require("./Sprinkles.scss");
 
 var _reactSvgInline = _interopRequireDefault(require("react-svg-inline"));
+
+var _ThrottledResize = _interopRequireDefault(require("./ThrottledResize"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -53448,43 +53514,58 @@ function (_Component) {
     _classCallCheck(this, Sprinkles);
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Sprinkles).call(this, props));
-    var _this$props = _this.props,
-        width = _this$props.width,
-        height = _this$props.height,
-        sprinkleFrequency = _this$props.sprinkleFrequency,
-        baseSVGUnit = _this$props.baseSVGUnit,
-        sprinkles = _this$props.sprinkles,
-        palette = _this$props.palette;
-    var baseWrapperUnit = baseSVGUnit * 2;
-    var wiggleRoom = (baseWrapperUnit - baseSVGUnit) / 2;
-    var componentWidth = width || window.innerWidth;
-    var componentHeight = height || window.innerHeight;
-    var numAcross = componentWidth / baseWrapperUnit;
-    var numDown = componentHeight / baseWrapperUnit;
-    _this.totalNumSprinkles = numAcross * numDown;
-    _this.grid = Array.from(Array(Math.round(numAcross * numDown))).map(function () {
-      return {
-        shouldShow: Math.random() < sprinkleFrequency,
-        svg: (0, _lodash.sample)(sprinkles),
-        fill: (0, _lodash.sample)(palette),
-        rotate: (0, _lodash.random)(0, 360),
-        translateX: (0, _lodash.random)(-wiggleRoom, wiggleRoom),
-        translateY: (0, _lodash.random)(-wiggleRoom, wiggleRoom),
-        width: String(baseSVGUnit),
-        height: String(baseSVGUnit),
-        wrapperWidth: baseWrapperUnit,
-        wrapperHeight: baseWrapperUnit
-      };
-    });
+
+    _this.createGrid();
+
     return _this;
   }
 
   _createClass(Sprinkles, [{
+    key: "createGrid",
+    value: function createGrid() {
+      var _this$props = this.props,
+          width = _this$props.width,
+          height = _this$props.height,
+          sprinkleFrequency = _this$props.sprinkleFrequency,
+          baseSVGUnit = _this$props.baseSVGUnit,
+          sprinkles = _this$props.sprinkles,
+          palette = _this$props.palette;
+      var baseWrapperUnit = baseSVGUnit * 2;
+      var wiggleRoom = (baseWrapperUnit - baseSVGUnit) / 2;
+      var componentWidth = width || window.innerWidth;
+      var componentHeight = height || window.innerHeight;
+      var numAcross = componentWidth / baseWrapperUnit;
+      var numDown = componentHeight / baseWrapperUnit;
+      this.totalNumSprinkles = numAcross * numDown;
+      this.grid = Array.from(Array(Math.round(numAcross * numDown))).map(function () {
+        return {
+          shouldShow: Math.random() < sprinkleFrequency,
+          svg: (0, _lodash.sample)(sprinkles),
+          fill: (0, _lodash.sample)(palette),
+          rotate: (0, _lodash.random)(0, 360),
+          translateX: (0, _lodash.random)(-wiggleRoom, wiggleRoom),
+          translateY: (0, _lodash.random)(-wiggleRoom, wiggleRoom),
+          width: String(baseSVGUnit),
+          height: String(baseSVGUnit),
+          wrapperWidth: baseWrapperUnit,
+          wrapperHeight: baseWrapperUnit
+        };
+      });
+    }
+  }, {
+    key: "handleResize",
+    value: function handleResize() {
+      this.createGrid();
+      this.forceUpdate();
+    }
+  }, {
     key: "render",
     value: function render() {
       var _this2 = this;
 
-      return _react.default.createElement("div", {
+      return _react.default.createElement(_ThrottledResize.default, {
+        onThrottledResize: this.handleResize.bind(this)
+      }, _react.default.createElement("div", {
         className: "sprinkles-component",
         ref: function ref(node) {
           return _this2.sprinklesNode = node;
@@ -53506,7 +53587,7 @@ function (_Component) {
           },
           fill: cell.fill
         }));
-      }));
+      })));
     }
   }]);
 
@@ -53514,7 +53595,7 @@ function (_Component) {
 }(_react.Component);
 
 exports.default = Sprinkles;
-},{"react":"node_modules/react/index.js","lodash":"node_modules/lodash/lodash.js","./Sprinkles.scss":"components/Sprinkles.scss","react-svg-inline":"node_modules/react-svg-inline/lib/index.js"}],"images/sprinkle-pill.svg":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","lodash":"node_modules/lodash/lodash.js","./Sprinkles.scss":"components/Sprinkles.scss","react-svg-inline":"node_modules/react-svg-inline/lib/index.js","./ThrottledResize":"components/ThrottledResize.jsx"}],"images/sprinkle-pill.svg":[function(require,module,exports) {
 module.exports = '<svg width="24" height="24"><path d="M12 19.76a2.58 2.58 0 0 1-2.58-2.581V6.82a2.58 2.58 0 0 1 5.16 0V17.18a2.58 2.58 0 0 1-2.58 2.58z"/></svg>'
 },{}],"images/sprinkle-triangle.svg":[function(require,module,exports) {
 module.exports = '<svg width="24" height="24"><path d="M18.248 17.41H5.752L12 6.59z"/></svg>'

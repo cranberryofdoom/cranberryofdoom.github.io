@@ -35,16 +35,24 @@
 
   .section-content {
     @include container();
-    @include padding(24, 18);
+    @include padding(24, 0);
     align-items: flex-start;
+
+    @media (max-width: $width-mobile-large) {
+      @include padding(12, 0);
+    }
   }
 
   .section-content.full {
-    @include padding(8, 12);
-    @include margin(12, 8, 8, 8);
+    @include padding(8, 0);
+    @include margin(12, 0, 8, 0);
     @include row-gutter(8);
     position: relative;
     align-items: center;
+
+    @media (max-width: $width-mobile-large) {
+      @include padding(4, 0);
+    }
   }
 
   .projects {

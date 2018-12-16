@@ -6,7 +6,7 @@ nav {
   @include columns();
   @include col-gutter(4);
   @include padding(3, 6);
-  background: #fff;
+  background: white;
   justify-content: center;
   position: fixed;
   top: 0;
@@ -17,5 +17,9 @@ nav {
     cursor: pointer;
     position: relative;
     font-size: 1em;
+
+    @media (max-width: $width-mobile-small) {
+      font-size: 0.875em;
+    }
   }
 }

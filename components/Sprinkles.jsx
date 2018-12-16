@@ -2,10 +2,15 @@ import React, { Component } from "react";
 import { sample, random } from "lodash";
 import "./Sprinkles.scss";
 import SVGInline from "react-svg-inline";
+import ThrottledResize from "./ThrottledResize";
 
 export default class Sprinkles extends Component {
   constructor(props) {
     super(props);
+    this.createGrid();
+  }
+
+  createGrid() {
     const {
       width,
       height,
@@ -35,40 +40,47 @@ export default class Sprinkles extends Component {
     }));
   }
 
+  handleResize() {
+    this.createGrid();
+    this.forceUpdate();
+  }
+
   render() {
     return (
-      <div
-        className="sprinkles-component"
-        ref={node => (this.sprinklesNode = node)}
-      >
-        {this.totalNumSprinkles &&
-          this.grid.map((cell, index) => {
-            return (
-              <div
-                key={index}
-                className="sprinkle-wrapper"
-                style={{
-                  width: cell.wrapperWidth,
-                  height: cell.wrapperHeight
-                }}
-              >
-                {cell.shouldShow && (
-                  <SVGInline
-                    svg={cell.svg}
-                    width={cell.width}
-                    height={cell.height}
-                    style={{
-                      transform: `rotate(${cell.rotate}deg) translateX(${
-                        cell.translateX
-                      }px) translateY(${cell.translateY}px)`
-                    }}
-                    fill={cell.fill}
-                  />
-                )}
-              </div>
-            );
-          })}
-      </div>
+      <ThrottledResize onThrottledResize={this.handleResize.bind(this)}>
+        <div
+          className="sprinkles-component"
+          ref={node => (this.sprinklesNode = node)}
+        >
+          {this.totalNumSprinkles &&
+            this.grid.map((cell, index) => {
+              return (
+                <div
+                  key={index}
+                  className="sprinkle-wrapper"
+                  style={{
+                    width: cell.wrapperWidth,
+                    height: cell.wrapperHeight
+                  }}
+                >
+                  {cell.shouldShow && (
+                    <SVGInline
+                      svg={cell.svg}
+                      width={cell.width}
+                      height={cell.height}
+                      style={{
+                        transform: `rotate(${cell.rotate}deg) translateX(${
+                          cell.translateX
+                        }px) translateY(${cell.translateY}px)`
+                      }}
+                      fill={cell.fill}
+                    />
+                  )}
+                </div>
+              );
+            })}
+        </div>
+      </ThrottledResize>
     );
   }
 }

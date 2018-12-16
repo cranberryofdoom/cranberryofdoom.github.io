@@ -8,6 +8,16 @@ h1 {
 h1.huge {
   font-size: 7em;
 }
+@media (max-width: 767px) {
+  h1.huge {
+    font-size: 3.75em;
+  }
+}
+@media (max-width: 321px) {
+  h1.huge {
+    font-size: 3em;
+  }
+}
 
 h2 {
   margin: 0;
@@ -35,6 +45,11 @@ li {
   line-height: 1.5em;
   margin-top: 12px;
 }
+@media (max-width: 321px) {
+  .subheader {
+    margin-top: 6px;
+  }
+}
 .subheader a {
   font-size: 1em;
   text-transform: none;
@@ -46,6 +61,16 @@ li {
 
 .subheader.huge {
   font-size: 1.75em;
+}
+@media (max-width: 767px) {
+  .subheader.huge {
+    font-size: 0.875em;
+  }
+}
+@media (max-width: 321px) {
+  .subheader.huge {
+    font-size: 0.75em;
+  }
 }
 
 a {
@@ -89,8 +114,9 @@ a:after {
   display: flex;
   flex-direction: column;
   padding: 0px;
-  padding: 90px 120px;
+  padding: 90px 60px;
   align-items: center;
+  text-align: center;
 }
 .band-container p {
   color: #aaa;
@@ -100,6 +126,8 @@ a:after {
   flex-direction: column;
   padding: 0px;
   flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
   text-align: center;
 }
 .band-container .animal-plushies > :not(:last-child) {
@@ -169,6 +197,16 @@ a:after {
 h1.huge {
   font-size: 7em;
 }
+@media (max-width: 767px) {
+  h1.huge {
+    font-size: 3.75em;
+  }
+}
+@media (max-width: 321px) {
+  h1.huge {
+    font-size: 3em;
+  }
+}
 
 h2 {
   margin: 0;
@@ -196,6 +234,11 @@ li {
   line-height: 1.5em;
   margin-top: 12px;
 }
+@media (max-width: 321px) {
+  .subheader {
+    margin-top: 6px;
+  }
+}
 .subheader a {
   font-size: 1em;
   text-transform: none;
@@ -207,6 +250,16 @@ li {
 
 .subheader.huge {
   font-size: 1.75em;
+}
+@media (max-width: 767px) {
+  .subheader.huge {
+    font-size: 0.875em;
+  }
+}
+@media (max-width: 321px) {
+  .subheader.huge {
+    font-size: 0.75em;
+  }
 }
 
 a {
@@ -293,17 +346,27 @@ a:after {
   display: flex;
   flex-direction: column;
   padding: 0px;
-  padding: 144px 108px;
+  padding: 144px 0px;
   align-items: flex-start;
 }
+@media (max-width: 426px) {
+  .home-container .section-content {
+    padding: 72px 0px;
+  }
+}
 .home-container .section-content.full {
-  padding: 48px 72px;
-  margin: 72px 48px 48px 48px;
+  padding: 48px 0px;
+  margin: 72px 0px 48px 0px;
   position: relative;
   align-items: center;
 }
 .home-container .section-content.full > :not(:last-child) {
   margin-bottom: 48px;
+}
+@media (max-width: 426px) {
+  .home-container .section-content.full {
+    padding: 24px 0px;
+  }
 }
 .home-container .projects {
   display: flex;
@@ -333,6 +396,16 @@ a:after {
 h1.huge {
   font-size: 7em;
 }
+@media (max-width: 767px) {
+  h1.huge {
+    font-size: 3.75em;
+  }
+}
+@media (max-width: 321px) {
+  h1.huge {
+    font-size: 3em;
+  }
+}
 
 h2 {
   margin: 0;
@@ -360,6 +433,11 @@ li {
   line-height: 1.5em;
   margin-top: 12px;
 }
+@media (max-width: 321px) {
+  .subheader {
+    margin-top: 6px;
+  }
+}
 .subheader a {
   font-size: 1em;
   text-transform: none;
@@ -371,6 +449,16 @@ li {
 
 .subheader.huge {
   font-size: 1.75em;
+}
+@media (max-width: 767px) {
+  .subheader.huge {
+    font-size: 0.875em;
+  }
+}
+@media (max-width: 321px) {
+  .subheader.huge {
+    font-size: 0.75em;
+  }
 }
 
 a {
@@ -417,7 +505,7 @@ nav {
   padding: 0px;
   flex-direction: row;
   padding: 18px 36px;
-  background: #fff;
+  background: white;
   justify-content: center;
   position: fixed;
   top: 0;
@@ -431,6 +519,11 @@ nav a {
   cursor: pointer;
   position: relative;
   font-size: 1em;
+}
+@media (max-width: 321px) {
+  nav a {
+    font-size: 0.875em;
+  }
 }h1 {
   margin: 0;
   font-size: 3em;
@@ -440,6 +533,16 @@ nav a {
 
 h1.huge {
   font-size: 7em;
+}
+@media (max-width: 767px) {
+  h1.huge {
+    font-size: 3.75em;
+  }
+}
+@media (max-width: 321px) {
+  h1.huge {
+    font-size: 3em;
+  }
 }
 
 h2 {
@@ -468,6 +571,11 @@ li {
   line-height: 1.5em;
   margin-top: 12px;
 }
+@media (max-width: 321px) {
+  .subheader {
+    margin-top: 6px;
+  }
+}
 .subheader a {
   font-size: 1em;
   text-transform: none;
@@ -479,6 +587,16 @@ li {
 
 .subheader.huge {
   font-size: 1.75em;
+}
+@media (max-width: 767px) {
+  .subheader.huge {
+    font-size: 0.875em;
+  }
+}
+@media (max-width: 321px) {
+  .subheader.huge {
+    font-size: 0.75em;
+  }
 }
 
 a {
@@ -532,6 +650,11 @@ a:after {
   width: auto;
   padding: 12px 36px 30px 36px;
 }
+@media (max-width: 767px) {
+  .landing-component header {
+    padding: 12px 12px 30px 12px;
+  }
+}
 .landing-component .sprinkles-component {
   position: absolute;
 }h1 {
@@ -543,6 +666,16 @@ a:after {
 
 h1.huge {
   font-size: 7em;
+}
+@media (max-width: 767px) {
+  h1.huge {
+    font-size: 3.75em;
+  }
+}
+@media (max-width: 321px) {
+  h1.huge {
+    font-size: 3em;
+  }
 }
 
 h2 {
@@ -571,6 +704,11 @@ li {
   line-height: 1.5em;
   margin-top: 12px;
 }
+@media (max-width: 321px) {
+  .subheader {
+    margin-top: 6px;
+  }
+}
 .subheader a {
   font-size: 1em;
   text-transform: none;
@@ -582,6 +720,16 @@ li {
 
 .subheader.huge {
   font-size: 1.75em;
+}
+@media (max-width: 767px) {
+  .subheader.huge {
+    font-size: 0.875em;
+  }
+}
+@media (max-width: 321px) {
+  .subheader.huge {
+    font-size: 0.75em;
+  }
 }
 
 a {
@@ -644,7 +792,7 @@ a:after {
   transition: transform 0.2s;
 }
 .sprinkles-component svg {
-  transform: rotate(56deg);
+  transform: rotate(77deg);
 }h1 {
   margin: 0;
   font-size: 3em;
@@ -654,6 +802,16 @@ a:after {
 
 h1.huge {
   font-size: 7em;
+}
+@media (max-width: 767px) {
+  h1.huge {
+    font-size: 3.75em;
+  }
+}
+@media (max-width: 321px) {
+  h1.huge {
+    font-size: 3em;
+  }
 }
 
 h2 {
@@ -682,6 +840,11 @@ li {
   line-height: 1.5em;
   margin-top: 12px;
 }
+@media (max-width: 321px) {
+  .subheader {
+    margin-top: 6px;
+  }
+}
 .subheader a {
   font-size: 1em;
   text-transform: none;
@@ -693,6 +856,16 @@ li {
 
 .subheader.huge {
   font-size: 1.75em;
+}
+@media (max-width: 767px) {
+  .subheader.huge {
+    font-size: 0.875em;
+  }
+}
+@media (max-width: 321px) {
+  .subheader.huge {
+    font-size: 0.75em;
+  }
 }
 
 a {
@@ -740,6 +913,34 @@ a:after {
 }
 .project-component > :not(:last-child) {
   margin-bottom: 24px;
+}
+@media (max-width: 960px) {
+  .project-component {
+    padding: 0px 24px;
+    width: 100vw;
+  }
+}
+.project-component .links {
+  display: flex;
+  flex-direction: column;
+  padding: 0px;
+}
+@media (min-width: 768px) {
+  .project-component .links {
+    flex-direction: row;
+  }
+  .project-component .links > :not(:last-child) {
+    margin-right: 24px;
+  }
+}
+@media (max-width: 767px) {
+  .project-component .links {
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+  .project-component .links > :not(:last-child) {
+    margin-bottom: 12px;
+  }
 }
 .project-component .project-summary {
   display: flex;
@@ -814,6 +1015,16 @@ a:after {
 h1.huge {
   font-size: 7em;
 }
+@media (max-width: 767px) {
+  h1.huge {
+    font-size: 3.75em;
+  }
+}
+@media (max-width: 321px) {
+  h1.huge {
+    font-size: 3em;
+  }
+}
 
 h2 {
   margin: 0;
@@ -841,6 +1052,11 @@ li {
   line-height: 1.5em;
   margin-top: 12px;
 }
+@media (max-width: 321px) {
+  .subheader {
+    margin-top: 6px;
+  }
+}
 .subheader a {
   font-size: 1em;
   text-transform: none;
@@ -852,6 +1068,16 @@ li {
 
 .subheader.huge {
   font-size: 1.75em;
+}
+@media (max-width: 767px) {
+  .subheader.huge {
+    font-size: 0.875em;
+  }
+}
+@media (max-width: 321px) {
+  .subheader.huge {
+    font-size: 0.75em;
+  }
 }
 
 a {
@@ -942,6 +1168,16 @@ a:after {
 h1.huge {
   font-size: 7em;
 }
+@media (max-width: 767px) {
+  h1.huge {
+    font-size: 3.75em;
+  }
+}
+@media (max-width: 321px) {
+  h1.huge {
+    font-size: 3em;
+  }
+}
 
 h2 {
   margin: 0;
@@ -969,6 +1205,11 @@ li {
   line-height: 1.5em;
   margin-top: 12px;
 }
+@media (max-width: 321px) {
+  .subheader {
+    margin-top: 6px;
+  }
+}
 .subheader a {
   font-size: 1em;
   text-transform: none;
@@ -980,6 +1221,16 @@ li {
 
 .subheader.huge {
   font-size: 1.75em;
+}
+@media (max-width: 767px) {
+  .subheader.huge {
+    font-size: 0.875em;
+  }
+}
+@media (max-width: 321px) {
+  .subheader.huge {
+    font-size: 0.75em;
+  }
 }
 
 a {
@@ -1052,6 +1303,16 @@ a:after {
 h1.huge {
   font-size: 7em;
 }
+@media (max-width: 767px) {
+  h1.huge {
+    font-size: 3.75em;
+  }
+}
+@media (max-width: 321px) {
+  h1.huge {
+    font-size: 3em;
+  }
+}
 
 h2 {
   margin: 0;
@@ -1079,6 +1340,11 @@ li {
   line-height: 1.5em;
   margin-top: 12px;
 }
+@media (max-width: 321px) {
+  .subheader {
+    margin-top: 6px;
+  }
+}
 .subheader a {
   font-size: 1em;
   text-transform: none;
@@ -1090,6 +1356,16 @@ li {
 
 .subheader.huge {
   font-size: 1.75em;
+}
+@media (max-width: 767px) {
+  .subheader.huge {
+    font-size: 0.875em;
+  }
+}
+@media (max-width: 321px) {
+  .subheader.huge {
+    font-size: 0.75em;
+  }
 }
 
 a {
@@ -1248,6 +1524,16 @@ a:after {
 h1.huge {
   font-size: 7em;
 }
+@media (max-width: 767px) {
+  h1.huge {
+    font-size: 3.75em;
+  }
+}
+@media (max-width: 321px) {
+  h1.huge {
+    font-size: 3em;
+  }
+}
 
 h2 {
   margin: 0;
@@ -1275,6 +1561,11 @@ li {
   line-height: 1.5em;
   margin-top: 12px;
 }
+@media (max-width: 321px) {
+  .subheader {
+    margin-top: 6px;
+  }
+}
 .subheader a {
   font-size: 1em;
   text-transform: none;
@@ -1286,6 +1577,16 @@ li {
 
 .subheader.huge {
   font-size: 1.75em;
+}
+@media (max-width: 767px) {
+  .subheader.huge {
+    font-size: 0.875em;
+  }
+}
+@media (max-width: 321px) {
+  .subheader.huge {
+    font-size: 0.75em;
+  }
 }
 
 a {
