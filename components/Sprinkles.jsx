@@ -2,71 +2,67 @@ import React, { Component } from "react";
 import { sample, random } from "lodash";
 import "./Sprinkles.scss";
 import SVGInline from "react-svg-inline";
-import pillSVG from "../images/sprinkle-pill.svg";
-import triangleSVG from "../images/sprinkle-triangle.svg";
-import squareSVG from "../images/sprinkle-square.svg";
-import ellipseSVG from "../images/sprinkle-ellipse.svg";
-import bigCircleSVG from "../images/sprinkle-big-circle.svg";
-import smallCircleSVG from "../images/sprinkle-small-circle.svg";
-
-const sprinkles = [
-  pillSVG,
-  triangleSVG,
-  squareSVG,
-  ellipseSVG,
-  bigCircleSVG,
-  smallCircleSVG
-];
-
-const palette = [
-  "#80CCDA",
-  "#FEE033",
-  "#FEC0BD",
-  "#FD8D55",
-  "#DDB9D8",
-  "#6EC6B1"
-];
 
 export default class Sprinkles extends Component {
-  render() {
-    const { width, height } = this.props;
-    const baseSVGUnit = 24;
+  constructor(props) {
+    super(props);
+    const {
+      width,
+      height,
+      sprinkleFrequency,
+      baseSVGUnit,
+      sprinkles,
+      palette
+    } = this.props;
     const baseWrapperUnit = baseSVGUnit * 2;
     const wiggleRoom = (baseWrapperUnit - baseSVGUnit) / 2;
     const componentWidth = width || window.innerWidth;
     const componentHeight = height || window.innerHeight;
     const numAcross = componentWidth / baseWrapperUnit;
     const numDown = componentHeight / baseWrapperUnit;
-    const totalNumSprinkles = numAcross * numDown;
-    const frequency = 0.6;
+    this.totalNumSprinkles = numAcross * numDown;
+    this.grid = Array.from(Array(Math.round(numAcross * numDown))).map(() => ({
+      shouldShow: Math.random() < sprinkleFrequency,
+      svg: sample(sprinkles),
+      fill: sample(palette),
+      rotate: random(0, 360),
+      translateX: random(-wiggleRoom, wiggleRoom),
+      translateY: random(-wiggleRoom, wiggleRoom),
+      width: String(baseSVGUnit),
+      height: String(baseSVGUnit),
+      wrapperWidth: baseWrapperUnit,
+      wrapperHeight: baseWrapperUnit
+    }));
+  }
+
+  render() {
     return (
       <div
         className="sprinkles-component"
         ref={node => (this.sprinklesNode = node)}
       >
-        {totalNumSprinkles &&
-          Array.from(Array(Math.round(numAcross * numDown))).map(() => {
-            const shouldShow = Math.random() < frequency;
+        {this.totalNumSprinkles &&
+          this.grid.map((cell, index) => {
             return (
               <div
+                key={index}
                 className="sprinkle-wrapper"
-                style={{ width: baseWrapperUnit, height: baseWrapperUnit }}
+                style={{
+                  width: cell.wrapperWidth,
+                  height: cell.wrapperHeight
+                }}
               >
-                {shouldShow && (
+                {cell.shouldShow && (
                   <SVGInline
-                    svg={sample(sprinkles)}
-                    width={baseSVGUnit}
-                    height={baseSVGUnit}
+                    svg={cell.svg}
+                    width={cell.width}
+                    height={cell.height}
                     style={{
-                      transform: `rotate(${random(
-                        0,
-                        360
-                      )}deg) translateX(${random(
-                        -wiggleRoom,
-                        wiggleRoom
-                      )}px) translateY(${random(-wiggleRoom, wiggleRoom)}px)`
+                      transform: `rotate(${cell.rotate}deg) translateX(${
+                        cell.translateX
+                      }px) translateY(${cell.translateY}px)`
                     }}
-                    fill={sample(palette)}
+                    fill={cell.fill}
                   />
                 )}
               </div>

@@ -3,9 +3,10 @@ const AnimalBandGroupPhoto1 = require("../../images/Animal-Band-Group-Photo-1.jp
 const AnimalBandGroupPhoto2 = require("../../images/Animal-Band-Group-Photo-2.jpg");
 const AnimalBandMakeMagazine = require("../../images/Animal-Band-MakeMagazine.jpg");
 const AnimalBandFrance24 = require("../../images/Animal-Band-France24.jpg");
-const AnimalBandMakerFaireRibbons = require("../../images/Animal-Band-MakerFaire-Ribbons.jpg");
-const AnimalBandMakerFaire1 = require("../../images/Animal-Band-MakerFaire-1.jpg");
-const AnimalBandMakerFaire2 = require("../../images/Animal-Band-MakerFaire-2.jpg");
+const AnimalBandMakerFaireWorld2017 = require("../../images/Animal-Band-MakerFaire-World-2017.jpg");
+const AnimalBandMakerFaireBayArea2017 = require("../../images/Animal-Band-MakerFaire-Bay-Area-2017.jpg");
+const AnimalBandMakerFaireBayArea20181 = require("../../images/Animal-Band-MakerFaire-Bay-Area-2018-1.jpg");
+const AnimalBandMakerFaireBayArea20182 = require("../../images/Animal-Band-MakerFaire-Bay-Area-2018-2.jpg");
 const projects = [
   {
     name: "Animal Band",
@@ -20,7 +21,7 @@ const projects = [
     ),
     gallery: [
       {
-        description: "Photoshoot",
+        description: "Photoshoot By Dani Grant",
         images: [
           {
             src: AnimalBandGroupPhoto1
@@ -31,7 +32,7 @@ const projects = [
         ]
       },
       {
-        description: "Featured In",
+        description: "Featured",
         images: [
           {
             caption: "Make:Magazine Volume 62",
@@ -44,16 +45,23 @@ const projects = [
         ]
       },
       {
-        description: "MakerFaires",
+        description: "MakerFaire",
         images: [
           {
-            src: AnimalBandMakerFaireRibbons
+            caption: "Bay Area MakerFaire 2017",
+            src: AnimalBandMakerFaireBayArea2017
           },
           {
-            src: AnimalBandMakerFaire1
+            caption: "World MakerFaire 2017",
+            src: AnimalBandMakerFaireWorld2017
           },
           {
-            src: AnimalBandMakerFaire2
+            caption: "Bay Area MakerFaire 2018",
+            src: AnimalBandMakerFaireBayArea20181
+          },
+          {
+            caption: "Bay Area MakerFaire 2018",
+            src: AnimalBandMakerFaireBayArea20182
           }
         ]
       }

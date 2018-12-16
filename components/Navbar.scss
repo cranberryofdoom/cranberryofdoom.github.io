@@ -5,7 +5,7 @@ nav {
   @include container();
   @include columns();
   @include col-gutter(4);
-  @include padding(4, 6);
+  @include padding(3, 6);
   background: #fff;
   justify-content: center;
   position: fixed;
@@ -16,5 +16,6 @@ nav {
   a {
     cursor: pointer;
     position: relative;
+    font-size: 1em;
   }
 }

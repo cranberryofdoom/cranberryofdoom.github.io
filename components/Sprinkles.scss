@@ -17,6 +17,10 @@
     transform-origin: center;
   }
 
+  .SVGInline {
+    transition: transform 0.2s;
+  }
+
   svg {
     transform: rotate(random(360) + deg);
   }

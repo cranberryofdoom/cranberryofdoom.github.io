@@ -1,4 +1,19 @@
 @import "../scss/base.scss";
 
 .landing-component {
+  position: relative;
+  @include container();
+  justify-content: center;
+  align-items: center;
+
+  header {
+    z-index: 1;
+    background: white;
+    width: auto;
+    @include padding(2, 6, 5, 6);
+  }
+
+  .sprinkles-component {
+    position: absolute;
+  }
 }

@@ -44,48 +44,33 @@ const projects = [
         </p>
       </span>
     ),
-    iterations: [
+    inline: true,
+    gallery: [
       {
-        date: moment("2018-01"),
         images: [
           {
             src: JAM30Filmstrip,
-            description: "Course Playlist"
+            caption: "2018 Course Playlist"
           },
           {
             src: JAM30AccountManagment,
-            description: "Account Management"
-          }
-        ]
-      },
-      {
-        date: moment("2017-01"),
-        images: [
+            caption: "2018 Account Management"
+          },
           {
             src: JAM20Packs,
-            description: "Course Topics"
+            caption: "2017 Course Topics"
           },
           {
             src: JAM20Cards,
-            description: "Card Learning Interface"
-          }
-        ]
-      },
-      {
-        date: moment("2016-06"),
-        images: [
+            caption: "2017 Card Learning Interface"
+          },
           {
             src: JAM15Chat,
-            description: "Chat Learning Interface Version 2"
-          }
-        ]
-      },
-      {
-        date: moment("2016-01"),
-        images: [
+            caption: "2016 Chat Learning Interface Version 2"
+          },
           {
             src: JAM10Chat,
-            description: "Chat Learning Interface Version 1"
+            caption: "2016 Chat Learning Interface Version 1"
           }
         ]
       }
@@ -103,17 +88,16 @@ const projects = [
         </p>
       </span>
     ),
-    iterations: [
+    gallery: [
       {
-        date: moment("2015-01"),
         images: [
           {
             src: DIYCampsCourseBrochure,
-            description: "Course Brochure"
+            caption: "2015 Course Brochure"
           },
           {
             src: DIYCampsRegistrationOfferSelectKid,
-            description: "Account Management"
+            caption: "2015 Account Management"
           }
         ]
       }

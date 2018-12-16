@@ -2,13 +2,13 @@ import React, { Component } from "react";
 import smoothScroll from "smoothscroll";
 import Band from "./Band";
 import "./Home.scss";
-import Sprinkles from "../components/Sprinkles";
 import diyProjects from "../fixtures/projects/diy";
 import chameledProjects from "../fixtures/projects/chameled";
 import animalBandProjects from "../fixtures/projects/animalBand";
 import Navbar from "../components/Navbar";
 import Landing from "../components/Landing";
 import Project from "../components/Project";
+import Modal from "../components/Modal";
 
 export default class Home extends Component {
   constructor(props) {
@@ -19,10 +19,13 @@ export default class Home extends Component {
   }
 
   handleClickImage(src) {
-    console.log(src);
     this.setState({
       focusedImgSrc: src
     });
+  }
+
+  handleCloseImage() {
+    this.setState({ focusedImgSrc: null });
   }
 
   handleScrollTo(link) {
@@ -54,6 +57,15 @@ export default class Home extends Component {
     const { focusedImgSrc } = this.state;
     return (
       <div className="home-container">
+        <Modal
+          show={Boolean(focusedImgSrc)}
+          onClick={this.handleCloseImage.bind(this)}
+        >
+          <div
+            className="enlarged-image"
+            style={{ backgroundImage: `url(${focusedImgSrc})` }}
+          />
+        </Modal>
         <Navbar onClick={this.handleScrollTo.bind(this)} />
         <div className="sections">
           <Landing onClick={this.handleScrollTo.bind(this)} />
@@ -74,8 +86,9 @@ export default class Home extends Component {
                 </div>
               </header>
               <div className="projects">
-                {diyProjects.map(project => (
+                {diyProjects.map((project, index) => (
                   <Project
+                    key={index}
                     project={project}
                     onClickImage={this.handleClickImage.bind(this)}
                   />
@@ -101,14 +114,16 @@ export default class Home extends Component {
                 </div>
               </header>
               <div className="projects">
-                {chameledProjects.map(project => (
+                {chameledProjects.map((project, index) => (
                   <Project
+                    key={index}
                     project={project}
                     onClickImage={this.handleClickImage.bind(this)}
                   />
                 ))}
-                {animalBandProjects.map(project => (
+                {animalBandProjects.map((project, index) => (
                   <Project
+                    key={index}
                     project={project}
                     onClickImage={this.handleClickImage.bind(this)}
                   />
