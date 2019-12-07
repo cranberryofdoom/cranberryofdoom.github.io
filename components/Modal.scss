@@ -1,0 +1,24 @@
+@import "../scss/base.scss";
+
+.modal-component {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  @include container();
+  @include padding(4);
+  cursor: pointer;
+  background: transparentize(black, 0.5);
+  z-index: -1;
+  transition: opacity 0.2s;
+  opacity: 0;
+}
+
+.modal-component.show {
+  z-index: 50;
+  opacity: 1;
+  transition: opacity 0.2s;
+}

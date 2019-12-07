@@ -1,0 +1,56 @@
+@import "base.scss";
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  @include container();
+  font-family: "Oxygen", sans-serif;
+  color: $color-charcoal;
+  margin: 0;
+  overflow-x: hidden;
+}
+
+.window {
+  height: 100vh;
+  @include container();
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.window.center {
+  justify-content: center;
+}
+
+.header,
+.positions,
+.position {
+  @include container();
+}
+
+img {
+  width: base-unitify(42);
+  height: auto;
+}
+
+.link-catagories {
+  @include container();
+  @include columns();
+  max-width: base-unitify(60);
+  text-align: center;
+}
+
+.links {
+  @include container();
+}
+
+.links.row {
+  @include columns();
+  @include col-gutter(2);
+}
+
+.link-catagory {
+  width: base-unitify(25);
+}

@@ -1,0 +1,39 @@
+@import "../scss/base.scss";
+
+.project-gallery-component {
+  @include row-gutter(1);
+
+  .project-images {
+    @include container();
+    @include columns();
+    @include col-gutter(2);
+    flex-shrink: 0;
+    overflow-x: auto;
+
+    img {
+      width: 100%;
+      height: auto;
+      transition: 0.2s;
+      cursor: pointer;
+      border: 1px solid transparentize(black, 0.95);
+
+      &:hover {
+        transition: 0.2s;
+      }
+    }
+  }
+
+  .project-images-wrapper {
+    @include container();
+    @include columns();
+    @include col-gutter(1);
+    align-items: flex-start;
+  }
+
+  .project-image {
+    @include container();
+    flex-shrink: 0;
+    position: relative;
+    width: base-unitify(70);
+  }
+}

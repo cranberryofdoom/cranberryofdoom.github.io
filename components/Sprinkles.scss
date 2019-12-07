@@ -1,0 +1,27 @@
+@import "../scss/base.scss";
+
+.sprinkles-component {
+  @include container();
+  @include columns();
+  flex-flow: wrap;
+  justify-content: center;
+
+  .sprinkle-wrapper {
+    @include container();
+    justify-content: center;
+    align-items: center;
+  }
+
+  .SVGInline,
+  .sprinkle-wrapper {
+    transform-origin: center;
+  }
+
+  .SVGInline {
+    transition: transform 0.2s;
+  }
+
+  svg {
+    transform: rotate(random(360) + deg);
+  }
+}

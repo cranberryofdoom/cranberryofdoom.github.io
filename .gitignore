@@ -7,4 +7,5 @@ vendor/
 src/app/firebase/
 src/assets/data.txt
 src/assets/data.json
-
+.cache
+dist

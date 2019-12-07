@@ -1,0 +1,87 @@
+@import "../scss/base.scss";
+
+$width-project: base-unitify(160);
+
+.project-component {
+  @include container();
+  @include row-gutter(4);
+  max-width: $width-project;
+
+  @media (max-width: $width-project) {
+    @include padding(0, 4);
+    width: 100vw;
+  }
+
+  .links {
+    @include container();
+
+    @media (min-width: $width-tablet) {
+      @include columns();
+      @include col-gutter(4);
+    }
+
+    @media (max-width: $width-tablet - 1) {
+      @include row-gutter(2);
+      justify-content: flex-start;
+      align-items: flex-start;
+    }
+  }
+
+  .project-summary {
+    @include container();
+    align-items: flex-start;
+  }
+
+  article {
+    @include container();
+    flex-shrink: 0;
+  }
+
+  .slider {
+    position: absolute;
+    top: 0;
+    width: base-unitify(4);
+    height: base-unitify(4);
+    border-radius: 50%;
+    background: transparentize(black, 0.25);
+    text-align: center;
+    @include container();
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 0.75em;
+  }
+
+  .slider.left {
+    left: base-unitify(-6);
+  }
+
+  .slider.right {
+    right: base-unitify(-6);
+  }
+
+  .project-galleries {
+    @include container();
+    @include row-gutter(8);
+  }
+
+  .project-galleries.inline {
+    @include container();
+    @include columns();
+    @include col-gutter(2);
+    overflow-x: auto;
+  }
+
+  .project-caption {
+    width: base-unitify(70) - 2;
+    margin: auto;
+    @include padding(1);
+    background: transparentize(black, 0.5);
+    color: white;
+    font-size: 0.75em;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+}
